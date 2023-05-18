@@ -1,9 +1,14 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import Dashboard from './dashboard/page'
+import {HeaderTemplate} from '../components/header/Header'
+import { SideBar } from '../components/sidebar/sideBar'
+import { Fragment } from 'react'
 
 export default function Home() {
   return (
-    <div className={styles.main}>Soy el Home</div>
+    <Fragment>
+      <div>
+        <HeaderTemplate nombreUsuario='Rodrigo Viveros' rol='Administrador'></HeaderTemplate>
+        <SideBar></SideBar>
+      </div>
+    </Fragment>
   )
 }
