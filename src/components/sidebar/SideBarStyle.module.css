@@ -1,34 +1,49 @@
-.container{
-    margin-top: 4px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #D9D9D9;
-    width: 12%;
-    max-width: 30%;
-    height: 100%;
+.container {
+  margin-top: 4px;
+  display: flex;
+  align-content: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background-color: #d9d9d9;
+  width: 12%;
+  max-width: 20%;
+  height: 100%;
 }
 
-.list{
-    margin-top: 40%;
-    padding-left: 5%;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    flex-flow: column wrap;
-    row-gap: 1em;
-}
-.txtLabel{
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
+.list {
+  margin-top: 30%;
+  padding-left: 5%;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-flow: column wrap;
+  row-gap: 1em;
+  margin-left: 0.5em;
 }
 
-.inputRadio{
-    margin-right: 0.5em;
-}
-
-.listElement{
+.listItem{
     display: flex;
     align-items: center;
-    flex-grow: 1;
+}
+
+.listItem > article {
+    font-size: 14px;
+    font-style: normal;
+    margin-left: 10px;
+}
+
+.circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.circleClicked{
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #555555;
+  cursor: pointer;
 }

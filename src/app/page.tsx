@@ -5,10 +5,8 @@ import { Fragment } from 'react'
 export default function Home() {
   return (
     <Fragment>
-      <div>
-        <HeaderTemplate nombreUsuario='Rodrigo Viveros' rol='Administrador'></HeaderTemplate>
+        <HeaderTemplate userName='Rodrigo Viveros' role='Administrador'></HeaderTemplate>
         <SideBar></SideBar>
-      </div>
     </Fragment>
   )
 }
