@@ -1,11 +1,9 @@
 "use client";
-import styles from './SideBarStyle.module.css'
+import styles from "./SideBarStyle.module.css";
 type CircleProps = {
-  selected:boolean
-  onClick:()=>void
+  className: string;
 };
 
-export const Circle = ({ selected,onClick}: CircleProps) => {
-  return <main onClick={onClick} className={selected ? styles.circleClicked : styles.circle}>
-  </main>;
+export const Circle = ({ className }: CircleProps) => {
+  return <main className={className} />;
 };

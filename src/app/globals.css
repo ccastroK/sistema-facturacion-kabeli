@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-html,body{
+body{
     margin: 0;
     font-family: 'Inter', sans-serif;
-    height: 100%;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.outlet{
+    display: flex;
+    flex: 15;
+}
+
+.outlet > article{
+ flex: 9;
 }
 

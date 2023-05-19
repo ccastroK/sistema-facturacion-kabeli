@@ -1,23 +1,32 @@
-'use client'
-import styles from './SideBarStyle.module.css'
-import { ListItem } from './ListItem'
-import { useState } from 'react'
-export const SideBar=()=>{
+"use client";
+import { useState } from "react";
 
-   const items:string[] = ['Dashboard','Socios','Proyectos','Clientes','Facturacion','Pagos']
+import styles from "./SideBarStyle.module.css";
+import { ListItem } from "./ListItem";
 
-   const [selectedItem, setSelectedItem] = useState<number | null>(null);
+import { menuItemList } from "./mocks/menuListMock";
 
-    const handleCLick=(index:number) => {
-        setSelectedItem(index);
-    }
+export const SideBar = () => {
+  const [items, setItems] = useState(menuItemList);
+  const handleCLick = (id: number) => {
+    setItems(
+      items.map((item) => ({ ...item, selected: id == item.id ? true : false }))
+    );
+  };
 
-
-    return (
-        <aside className={styles.container}>
-            <ul className={styles.list}>
-                {items.map((item,index)=>(<ListItem index={index} onClick={handleCLick} selected={selectedItem===index} key={index} name={item} className={styles.listItem} />))}
-            </ul>
-        </aside>
-    )
-}
+  return (
+    <aside className={styles.container}>
+      <ul className={styles.list}>
+        {items.map((item) => (
+          <ListItem
+            onClick={() => handleCLick(item.id)}
+            key={item.id}
+            className={styles.listItem}
+            selected={item.selected ? styles.circleClicked : styles.circle}
+            name={item.name}
+          />
+        ))}
+      </ul>
+    </aside>
+  );
+};
