@@ -1,17 +1,19 @@
 "use client";
-
 import { Circle } from "./Circle";
 
 type ListItemProps = {
   className: string;
-  circleClassName:string;
   name:string;
+  selected:boolean;
+  index:number;
+  onClick:(index:number) => void
 };
-export const ListItem = ({ className,name,circleClassName }: ListItemProps) => {
+
+export const ListItem = ({ className,name,selected,onClick,index }: ListItemProps) => {
 
   return( 
     <main className={className}>
-        <Circle className={circleClassName}/>
+        <Circle onClick={()=>onClick(index)} selected={selected}/>
         <article>
           {name}
         </article>
