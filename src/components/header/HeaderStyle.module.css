@@ -13,6 +13,7 @@
 }
 
 .logoKabeli>a>img{
+  width: 80px;
   max-width: 160px;
 }
 
@@ -27,6 +28,7 @@
 .icons > a > img {
   display: flex;
   align-items: center;
+  width: 18px;
 }
 
 .userInfo{

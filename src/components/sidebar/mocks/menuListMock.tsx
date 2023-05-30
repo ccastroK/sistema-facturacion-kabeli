@@ -1,3 +1,5 @@
+import { Pokedex } from '@/app/interface/pokeInterface';
+import { getAllPoke } from '@/app/infraestructure/services/PokeService';
 export const menuItemList: any[] = [
   {
     id: 1,
@@ -36,3 +38,12 @@ export const menuItemList: any[] = [
     selected: false,
   },
 ];
+
+export async function PokeMenu():any[] {
+  const res: Pokedex = await getAllPoke();
+
+  for (let index = 0; index < res.results.length; index++) {
+    menuItemList[index].name=res.results[index].name
+  }
+  return menuItemList;
+}

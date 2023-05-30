@@ -10,6 +10,7 @@
 }
 
 .list {
+  margin-top: 60%;
   padding-left: 5%;
   display: flex;
   justify-content: center;

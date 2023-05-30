@@ -4,9 +4,12 @@ import { useState } from "react";
 import styles from "./SideBarStyle.module.css";
 import { ListItem } from "./ListItem";
 
-import { menuItemList } from "./mocks/menuListMock";
+import { menuItemList,PokeMenu } from "./mocks/menuListMock";
 
 export const SideBar = () => {
+
+  //const itemList=PokeMenu();
+
   const [items, setItems] = useState(menuItemList);
   const handleCLick = (id: number) => {
     setItems(
