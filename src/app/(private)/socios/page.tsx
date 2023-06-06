@@ -1,9 +1,5 @@
-import { CreateSocio } from "@/components/forms/formsVieww/CreateSocio";
+import { CreateSocio } from "@/components/forms/formsView/create-socio";
 
-const Socios = ()=>{
-  return (<>
-      <CreateSocio/>
-    </>)
-}
+const Socios = () => <CreateSocio />;
 
 export default Socios;

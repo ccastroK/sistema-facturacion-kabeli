@@ -16,17 +16,10 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body>
-        <HeaderTemplate
-          userName="Rodrigo Viveros"
-          role="Administrador"
-        ></HeaderTemplate>
-        <main className="outlet">
-          <SideBar />
-          <article>{children}</article>
-        </main>
-      </body>
-    </html>
+    <main className="outlet">
+      <SideBar />
+      <HeaderTemplate userName="Rodrigo Viveros" role="Administrador" />
+      <article>{children}</article>
+    </main>
   );
 }
