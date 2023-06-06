@@ -1,21 +1,26 @@
 "use client";
+
+import { ChangeEvent } from "react";
+
 type InputTextProps = {
   nombre: string;
   placeholder: string;
   classname: string;
   value:string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
 };
 
 export const InputText = ({
   nombre,
   placeholder,
   classname,
-  value
+  value,
+  onChange
 }: InputTextProps) => {
   return (
     <section className={classname}>
       <h6>{nombre}</h6>
-      <input type="text" placeholder={placeholder} value={value} />
+      <input onChange={onChange} type="text" placeholder={placeholder}/>
     </section>
   );
 };
