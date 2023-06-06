@@ -44,3 +44,70 @@
     order: 1;
     flex-grow: 0;
 }
+
+.inpMail{
+    display: flex;
+    flex-direction: column;
+}
+
+.inpMail>h6{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.inpMail > input {
+    border-radius: 3px;
+    border-color: #6A7F99;
+    outline: none;
+    border-style: solid;
+}
+
+.inpPass{
+    display: flex;
+    flex-direction: column;
+}
+
+.inpPass>h6{
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    order: 0;
+    flex-grow: 1;
+}
+
+.inpPass > input {
+    border-radius: 3px;
+    border-color: #6A7F99;
+    outline: none;
+    border-style: solid;
+}
+
+.btnSubmit{
+    margin-top: 20px;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btnSubmit > button {
+    background: #B5B9BD;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 10px;
+    font-style: normal;
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.btnSubmit>a{
+    margin-top: 16px;
+    text-decoration-line: underline;
+    color: #1286F0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+}

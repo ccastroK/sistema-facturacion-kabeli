@@ -1,7 +1,10 @@
+"use client";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { HeaderTemplate } from "@/components/header/Header";
 import { SideBar } from "@/components/sidebar/sideBar";
+import { SessionProvider } from "next-auth/react";
+import { NextAuthProvider } from "../components/provider/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>
-        <article>{children}</article>
-      </body>
+      <NextAuthProvider>
+        <body>
+          <article>{children}</article>
+        </body>
+      </NextAuthProvider>
     </html>
   );
 }
