@@ -1,23 +1,27 @@
 "use client";
-import { Circle } from "./Circle";
+import { faIcon } from "../shared/icons/fa-icons";
 
 type ListItemProps = {
   className: string;
-  name: string;
-  selected: string;
+  onlyIcon: boolean;
+  icon: string;
   onClick: () => void;
+  name?: string;
 };
 
 export const ListItem = ({
   className,
-  name,
-  selected,
+  onlyIcon,
+  icon,
   onClick,
+  name,
 }: ListItemProps) => {
   return (
-    <main className={className} onClick={onClick}>
-      <Circle className={selected} />
-      <article>{name}</article>
-    </main>
+    <li className={className} onClick={onClick}>
+      <main>
+        {faIcon(icon)}
+        {!onlyIcon ? name ? <article>{name}</article> : null : null}
+      </main>
+    </li>
   );
 };

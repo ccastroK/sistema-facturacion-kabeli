@@ -3,36 +3,31 @@ import { Title } from "@/components/shared/Title";
 import styles from "../LoginStyle.module.css";
 import { Welcome } from "../loginComponents/Welcome";
 import { InputText } from "@/components/forms/inputs/inputText";
-import { Button } from "../../shared/Button";
 import { FormEvent, useState, ChangeEvent } from "react";
 import { signIn } from "next-auth/react";
 import { ButtonLoggin } from "../loginComponents/ButtonLogin";
+import { CustomForm } from "@/components/shared/forms/custom-form";
+import { loginFormMock } from "../mocks-login/login";
+import { findIndexForm } from "@/components/shared/utils/forms";
 
 export const LogInView = () => {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassrod] = useState<string>();
+  const [dataLogin, setDataLogin] = useState<any[]>([]);
+  const setNewDataLogin = (newDataLogin: any[]) => {
+    setDataLogin([...newDataLogin]);
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(email,password);
     signIn("credentials", {
-      email: email,
-      password: password,
-      callbackUrl:"/"
+      email: findIndexForm("email", dataLogin),
+      password: findIndexForm("password", dataLogin),
+      callbackUrl: "/",
     });
   };
 
-  const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    setPassrod(e.target.value);
-  };
-  const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    setEmail(e.target.value);
-  };
   return (
-    <div>
-        <main className={styles.container}>
+    <>
+      <main className={styles.container}>
         <Title title="Factify" classname={styles.logo} />
         <Welcome
           subtitle="Ingresa con tu cuenta Kabeli"
@@ -40,25 +35,15 @@ export const LogInView = () => {
           className={styles.welcome}
         />
         <h6>Digamos que existe el boton de google</h6>
-        <form onSubmit={handleSubmit}>
-          <InputText
-            onChange={handleEmail}
-            classname={styles.inpMail}
-            nombre="Correo electrónico"
-            placeholder=""
-            value="email"
-          ></InputText>
-          <InputText
-            onChange={handlePassword}
-            classname={styles.inpPass}
-            nombre="Contraseña"
-            placeholder="************"
-            value="password"
-          ></InputText>
-          <ButtonLoggin classname={styles.btnSubmit} name="Iniciar Sesión" nameA="¿No tienes tu contraseña?"/>
-        </form>
+        <CustomForm
+          inputs={loginFormMock}
+          values={dataLogin}
+          setValues={setNewDataLogin}
+          button={{ name: "Iniciar Sesión", type: "submit" }}
+          onSubmit={handleSubmit}
+        />
+        <a>Soy un A</a>
       </main>
-    </div>
-      
+    </>
   );
 };

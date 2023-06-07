@@ -1,48 +1,123 @@
 .container {
-  margin-top: 4px;
+  font-family: 'Montserrat';
+  font-style: normal;
   display: flex;
   align-content: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  background-color: #d9d9d9;
-  margin-right: 0px;
+  border-right: 1px solid #B9C9DD;
   flex: 1;
 }
 
-.list {
-  margin-top: 60%;
-  padding-left: 5%;
+.container .active{
+  flex: 1;
+}
+.container .inactive {
+  flex: 2;
+}
+
+.container > ul{
+  padding: 0px;
+  margin: 0px;
+  flex: 1;
   display: flex;
-  justify-content: center;
-  list-style: none;
-  flex-flow: column wrap;
-  row-gap: 1em;
-  margin-left: 0.5em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.active > ul{
+  align-items: center;
+} 
+
+.logoIcon > a > img{
+  max-width: 32px;
+  max-height: 32px;
+  cursor: pointer;
+}
+.logo > a > img{ 
+  cursor: pointer;
+  max-width: 129px;
+  max-height: 32px;
+
 }
 
 .listItem{
     display: flex;
     align-items: center;
-}
-
-.listItem > article {
+    justify-content: center;
+    color: var(--grayscale-grey);
     font-size: 14px;
-    font-style: normal;
-    margin-left: 10px;
+    flex:1;
+    cursor: pointer;
 }
 
-.circle {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: #fff;
-  cursor: pointer;
+.listItem:hover{
+  color: var(--garyscale-black);
 }
 
-.circleClicked{
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: #555555;
-  cursor: pointer;
+.listItem > main{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.listItem > main > svg{
+  width: 24px;
+  height: 24px;
+}
+ 
+.listItem > main > article{
+  font-weight: 500;
+  font-size: 14px;
+}
+
+
+.listIcon{
+  border: none;
+}
+
+.selectedItem{
+  border-right: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.selectedItem:hover{
+  border-right: 2px solid var(--hover);
+  color: var(--hover);
+}
+
+.selectedItem > main > article{
+  font-weight: 700;
+}
+
+.selectedIcon{
+  color: var(--primary);
+}
+
+.selectedIcon:hover{
+  color: var(--hover)
+}
+
+.listText{
+  width: 100%;
+  border: none;
+  flex: 1;
+}
+
+.listText > main {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  min-width: 129px;
+}
+
+.rowItem{
+  justify-content: flex-end;
+  flex-direction: row;
+  width: 100%;
+}
+.rowItem > main > svg{
+  margin-right: 16px;
 }

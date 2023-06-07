@@ -1,21 +1,27 @@
 "use client";
 
-import { Profile } from "./Profile";
+import { Profile } from "../shared/Profile";
 
 type UserProps = {
   className: string;
-  profileClassName:string;
-  name:string;
-  role:string
+  profileClassName: string;
+  name: string;
+  role: string;
 };
 
-export const User = ({ className,profileClassName,name,role }: UserProps) => {
-  return( <main className={className}>
-    <Profile className={profileClassName}/>
-    <article>
+export const User = ({
+  className,
+  profileClassName,
+  name,
+  role,
+}: UserProps) => {
+  return (
+    <main className={className}>
+      <Profile className={profileClassName} />
+      <article>
         <h5>{name}</h5>
         <h6>{role}</h6>
-    </article>
-  </main>
-  )
+      </article>
+    </main>
+  );
 };

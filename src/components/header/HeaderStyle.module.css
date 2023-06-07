@@ -1,9 +1,14 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap;
-  background-color: #d9d9d9;
   flex: 1;
+}
+
+.header > section {
+  margin-right: 5%;
+  display: flex;
+  align-items: center;
 }
 
 .icons {
@@ -50,11 +55,6 @@
 .userInfo > article >h6 {
   font-size: 12px;
   margin: 0;
-}
-
-.section {
-  display: flex;
-  align-items: center;
 }
 
 .circle {

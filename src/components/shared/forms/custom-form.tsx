@@ -1,6 +1,17 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import { customInput } from "./custom-input";
 import { IInput } from "../interfaces/forms/inputs/input-interface";
+import { Button } from "../buttons/Button";
+import { IButton } from "../interfaces/buttons/button-interface";
+
+type CustomFormProps = {
+  inputs: any[];
+  values: any[];
+  setValues: (values: any[]) => void;
+  button: IButton;
+  onSubmit: (e: FormEvent) => void;
+  extraButton?: IButton;
+};
 
 const formatIputs = (
   values: any[],
@@ -24,14 +35,19 @@ const formatIputs = (
   return customInput(inputData);
 };
 
-export const CustomForm = (
-  inputs: any[],
-  values: any[],
-  setValues: (values: any[]) => void
-) => {
+export const CustomForm = ({
+  inputs,
+  setValues,
+  values,
+  button,
+  onSubmit,
+  extraButton,
+}: CustomFormProps) => {
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       {inputs.map((inputData) => formatIputs(values, setValues, inputData))}
+      {extraButton ? Button(extraButton) : null}
+      {Button(button)}
     </form>
   );
 };

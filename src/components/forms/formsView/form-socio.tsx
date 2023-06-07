@@ -1,6 +1,6 @@
 import { CustomForm } from "@/components/shared/forms/custom-form";
 import { formSocioMock } from "../mocks-form/formSocioMock";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export const FormSocio = () => {
   const [dataSocios, setDataSocios] = useState<any[]>([]);
@@ -8,5 +8,18 @@ export const FormSocio = () => {
     setDataSocios([...newDataSocio]);
   };
 
-  return CustomForm(formSocioMock, dataSocios, setNewDataSocios);
+  const handleSubmit = (e: FormEvent) => {
+    console.log(e);
+  };
+
+  return (
+    <CustomForm
+      inputs={formSocioMock}
+      values={dataSocios}
+      setValues={setNewDataSocios}
+      onSubmit={handleSubmit}
+      button={{ name: "Crear nuevo socio", type: "submit" }}
+      extraButton={{ name: "Volver", type: "button" }}
+    />
+  );
 };

@@ -2,7 +2,6 @@
 import styles from "./HeaderStyle.module.css";
 import { Icon } from "../shared/Icon";
 import { User } from "./User";
-import { Logo } from "../shared/Logo";
 
 type HeaderProps = {
   userName: string;
@@ -32,8 +31,7 @@ const Icons = {
 export const HeaderTemplate = ({ userName, role }: HeaderProps) => {
   return (
     <header className={styles.header}>
-      <Logo {...Icons.logo} />
-      <section className={styles.section}>
+      <section>
         <Icon className={Icons.className} {...Icons.notification} />
         <User
           {...{
@@ -43,7 +41,6 @@ export const HeaderTemplate = ({ userName, role }: HeaderProps) => {
             profileClassName: styles.circle,
           }}
         />
-        <Icon className={Icons.className} {...Icons.exit} />
       </section>
     </header>
   );

@@ -1,19 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
+:root{
+    --primary: #3BC211;
+    --hover:#4FAE32;
+    --grayscale-black: #334459;
+    --grayscale-grey: #6A7F99;
+    --grayscale-light-grey: #B9C9DD;
+    --grayscale-chip: #D7E4F5;
+    --grayscale-disable: #B5B9BD;
+    --grayscale-background: #F3F3F3;
+    --grayscale-card-background: #FBFBFB;
+    --grayscale-white: #FFFFFF;
+    --state-success: #4FAE32;
+    --state-atention: #E09B32;
+    --state-error: #E03232;
+    --state-info: #1286F0;
+    --state-background-success: #E8FFE1;
+    --state-background-atention: #FFF5E5;
+    --state-background-error: #FFECEC;
+    --state-background-info: #D7E4F5;
+  }
+  
 body{
     margin: 0;
     font-family: 'Inter', sans-serif;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100vh;
 }
 
 .outlet{
     display: flex;
-    flex: 15;
+    flex-direction: column;
+    flex: 19;
 }
 
 .outlet > article{
- flex: 9;
+ flex: 18;
 }
 
