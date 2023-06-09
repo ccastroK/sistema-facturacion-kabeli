@@ -9,6 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import {faCircleCheck} from '@fortawesome/free-regular-svg-icons'
 config.autoAddCss = false;
 
 const faIcons = {
@@ -19,6 +21,8 @@ const faIcons = {
   faScroll,
   faChevronLeft,
   faChevronRight,
+  faGoogle,
+  faCircleCheck
 };
 
 type ObjectKey = keyof typeof faIcon;

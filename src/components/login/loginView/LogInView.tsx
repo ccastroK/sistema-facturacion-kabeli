@@ -1,14 +1,15 @@
 "use client";
-import { Title } from "@/components/shared/Title";
 import styles from "../LoginStyle.module.css";
 import { Welcome } from "../loginComponents/Welcome";
-import { InputText } from "@/components/forms/inputs/inputText";
 import { FormEvent, useState, ChangeEvent } from "react";
 import { signIn } from "next-auth/react";
-import { ButtonLoggin } from "../loginComponents/ButtonLogin";
 import { CustomForm } from "@/components/shared/forms/custom-form";
 import { loginFormMock } from "../mocks-login/login";
 import { findIndexForm } from "@/components/shared/utils/forms";
+import { Logo } from "@/components/shared/Logo";
+import { Button } from "@/components/shared/buttons/Button";
+import { A } from "@/components/shared/A";
+import { CustomSeparator } from "@/components/shared/custom-separator/custom-separator";
 
 export const LogInView = () => {
   const [dataLogin, setDataLogin] = useState<any[]>([]);
@@ -28,13 +29,14 @@ export const LogInView = () => {
   return (
     <>
       <main className={styles.container}>
-        <Title title="Factify" classname={styles.logo} />
+        <Logo alt="Logo Factify"  src="/factfy.png" onClick={()=>{}}/>
         <Welcome
           subtitle="Ingresa con tu cuenta Kabeli"
           title="Te damos la bienvenida"
           className={styles.welcome}
         />
-        <h6>Digamos que existe el boton de google</h6>
+        <Button name="Iniciar sesión con Google" type="submit" onClick={undefined} icon="faGoogle" />
+        <CustomSeparator/>
         <CustomForm
           inputs={loginFormMock}
           values={dataLogin}
@@ -42,7 +44,7 @@ export const LogInView = () => {
           button={{ name: "Iniciar Sesión", type: "submit" }}
           onSubmit={handleSubmit}
         />
-        <a>Soy un A</a>
+        <A name="¿No tienes tu contraseña?" onClick={()=>{}}/>
       </main>
     </>
   );

@@ -6,8 +6,8 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 25px 25px 40px;
+    align-items: center;
 
-    /* Me gustaria saber como hacerlo responsivo, espero que leas esto anibal :) */
     position: absolute;
     width: 18%;
     height: 400px;
@@ -20,94 +20,106 @@
     border-radius: 4px;
 }
 
-.logo{
-    font-size: 20px;
-    margin-top: 0px;
+.container > figure {
+    flex: 1;
+    margin: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
 }
 
+.container > figure > a > img {
+    max-width: 200px;
+    width: 120px;
+}
+
+
 .welcome{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
     margin-top: 10px;
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .welcome > h1 {
-    font-size: 24px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    font-size: 20px;
+    flex: 1;
     margin-bottom: 10px;
 }
 
 .welcome > h4 {
     margin-top: 0px;
-    font-size: 14px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-}
-
-.inpMail{
-    display: flex;
-    flex-direction: column;
-}
-
-.inpMail>h6{
     font-size: 12px;
-    font-weight: 400;
-    margin-bottom: 5px;
+    flex: 1;
 }
 
-.inpMail > input {
-    border-radius: 3px;
-    border-color: #6A7F99;
-    outline: none;
-    border-style: solid;
-}
-
-.inpPass{
+.container > button {
     display: flex;
-    flex-direction: column;
-}
-
-.inpPass>h6{
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: 400;
-    margin-bottom: 5px;
-    order: 0;
-    flex-grow: 1;
-}
-
-.inpPass > input {
-    border-radius: 3px;
-    border-color: #6A7F99;
-    outline: none;
-    border-style: solid;
-}
-
-.btnSubmit{
-    margin-top: 20px;
-    display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.btnSubmit > button {
-    background: #B5B9BD;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 10px;
-    font-style: normal;
-    color: #FFFFFF;
+    flex : 0.5;
     width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #334459;
+    border-radius: 4px;
 }
 
-.btnSubmit>a{
-    margin-top: 16px;
-    text-decoration-line: underline;
-    color: #1286F0;
-    font-style: normal;
-    font-weight: 500;
+
+.container > button > svg {
+    width: 18px;
+    max-width: 25px;
+    margin-right: 5px;
+}
+
+.container > form {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+}
+
+
+.container > form >section {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    gap: 5px;
+    margin-bottom: 7px;
+} 
+
+.container > form > section > h6 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 400;
+}
+
+.container > form > section > input {
+    margin: 0px;
+}
+
+.container>form>section>button {
+    background: var(--grayscale-disable); 
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    font-weight: 600;
+    flex: 1;
+}
+
+.container>a{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    color: var(--state-info);
+    cursor: pointer;
     font-size: 12px;
+    text-decoration: underline;
+    font-weight: 500;
 }

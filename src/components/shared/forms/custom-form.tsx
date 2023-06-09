@@ -46,8 +46,10 @@ export const CustomForm = ({
   return (
     <form onSubmit={onSubmit}>
       {inputs.map((inputData) => formatIputs(values, setValues, inputData))}
-      {extraButton ? Button(extraButton) : null}
-      {Button(button)}
+      <section className="sectionButton">
+        {extraButton ? Button(extraButton) : null}
+        {Button(button)}
+      </section>
     </form>
   );
 };

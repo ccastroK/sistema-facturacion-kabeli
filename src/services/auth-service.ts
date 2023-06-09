@@ -1,9 +1,17 @@
 import { IUserLoged } from "@/interfaces/user-loged.interface";
 import { LogIn } from "./login-service";
+import { Fetcher } from "./fetcher-service";
+import { HTTP_METHODS } from "next/dist/server/web/http";
 
 
 const authorize = async (credentials: any) => {
-  const user: IUserLoged = await LogIn(credentials);
+
+  // const user: IUserLoged = await LogIn(credentials);
+  const url = 'http://localhost:4000/auth/login';
+  const body = JSON.stringify(credentials);
+  const header = {"Content-Type": "application/json"}
+
+  const user:IUserLoged = await Fetcher<IUserLoged>(body,url,HTTP_METHODS[3],"appJson");
 
   const userString = JSON.stringify(user.data);
 

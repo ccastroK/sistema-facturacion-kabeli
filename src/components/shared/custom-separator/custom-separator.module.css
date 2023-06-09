@@ -1,0 +1,22 @@
+.main {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.center {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.line {
+  margin-right: 10px;
+  display: flex;
+  height: 120%;
+  border: 1px solid #b5b9bd;
+  transform: rotate(90deg);
+  flex-flow: row;
+}
