@@ -9,7 +9,6 @@ export const FormSocio = () => {
   };
 
   const handleSubmit = (e: FormEvent) => {
-    console.log(e);
   };
 
   return (

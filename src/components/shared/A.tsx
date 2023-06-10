@@ -1,9 +1,10 @@
+import Link from "next/link"
 
 interface AProps {
     name:string
-    onClick: () => void
+    url:string
 }
 
-export const A = ({name,onClick}:AProps) => (
-    <a onClick={onClick}>{name}</a>
+export const A = ({name,url}:AProps) => (
+   <Link href={url}>{name}</Link>
 )

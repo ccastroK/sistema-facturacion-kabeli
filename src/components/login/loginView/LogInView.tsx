@@ -26,6 +26,10 @@ export const LogInView = () => {
     });
   };
 
+  const handleGoogle = () => {
+    signIn("google",{callbackUrl:"/"})
+  }
+
   return (
     <>
       <main className={styles.container}>
@@ -35,7 +39,7 @@ export const LogInView = () => {
           title="Te damos la bienvenida"
           className={styles.welcome}
         />
-        <Button name="Iniciar sesión con Google" type="submit" onClick={undefined} icon="faGoogle" />
+        <Button name="Iniciar sesión con Google" type="submit" onClick={handleGoogle} icon="faGoogle" />
         <CustomSeparator/>
         <CustomForm
           inputs={loginFormMock}
@@ -44,7 +48,7 @@ export const LogInView = () => {
           button={{ name: "Iniciar Sesión", type: "submit" }}
           onSubmit={handleSubmit}
         />
-        <A name="¿No tienes tu contraseña?" onClick={()=>{}}/>
+        <A name="¿No tienes tu contraseña?" url="/send-email"/>
       </main>
     </>
   );

@@ -98,6 +98,7 @@
   border-radius: 4px;
   font-weight: 600; 
   font-size: 12px;
+  cursor: pointer;
 }
 
 .container > form > section + section > button + button{
@@ -112,4 +113,5 @@
     color: #ffffff;
     font-weight: 600;
     font-size: 12px;
+    cursor: pointer;
 }
