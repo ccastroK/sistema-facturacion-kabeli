@@ -1,4 +1,4 @@
-import { IInput } from "../interfaces/forms/inputs/input-interface";
+import { IInput } from "@/interfaces/components/form.interface";
 import { InputNumber } from "./inputs/input-number";
 import { InputSelect } from "./inputs/input-select";
 import { InputText } from "./inputs/input-text";
@@ -6,7 +6,7 @@ import { InputText } from "./inputs/input-text";
 const inputType = {
   text: (inputProps: IInput) => InputText(inputProps),
   number: (inputProps: IInput) => InputNumber(inputProps),
-  password: (inputProps: IInput) => InputText(inputProps), //Pendiente crear input de tipo password
+  password: (inputProps: IInput) => InputText(inputProps),
   select: (inputProps: IInput) => InputSelect(inputProps),
 };
 

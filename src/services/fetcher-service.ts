@@ -1,7 +1,7 @@
 import { HTTP_METHOD } from "next/dist/server/web/http";
 
 const contentOptions = {
-    appJson: { "Content-Type" : "application/json"},
+  appJson: { "Content-Type" : "application/json"},
 }
      
 type ObjectKey = keyof typeof contentOptions;

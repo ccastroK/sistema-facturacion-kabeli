@@ -1,4 +1,4 @@
-export const menuItemList: any[] = [
+export const menuItemList: any[] = [//tecnical debt
   {
     id: 1,
     name: "Dashboard",

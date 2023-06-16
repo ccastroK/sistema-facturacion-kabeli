@@ -1,4 +1,4 @@
-import { IButton } from "../interfaces/buttons/button-interface";
+import { IButton } from "@/interfaces/components/global-components.interface";
 import { faIcon } from "../icons/fa-icons";
 
 export const Button = ({ name, type, onClick, icon }: IButton) => (

@@ -7,16 +7,25 @@ import { CreatePasswordMock } from "../mocks-create-password.ts/create-password"
 import { CustomList } from "@/components/shared/custom-list";
 import { list } from "../mocks-create-password.ts/create-password";
 import { useRouter } from "next/navigation";
+import { RecoveryPassword } from "@/services/password-service";
 
-export const CreatePassword = () => {
+interface ICreatePasswordProps {
+  id: string;
+}
+
+export const CreatePassword = ({ id }: ICreatePasswordProps) => {
   const router = useRouter();
-  const [password, setPassword] = useState<any[]>([]);
-  const setNewPassword = (newDataPassword: any[]) => {
+  const [password, setPassword] = useState<any[]>([]);//tecnical debt
+  const setNewPassword = (newDataPassword: any[]) => {//tecnical debt
     setPassword([...newDataPassword]);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    router.prefetch('/password-successfull')
+    const newPassword = password[1].value as string;
+    const result = await RecoveryPassword( {id, newPassword} );
+    result ? router.push('/password-successfull') : router.refresh()
   };
 
   return (
@@ -32,7 +41,10 @@ export const CreatePassword = () => {
         onSubmit={handleSubmit}
         setValues={setNewPassword}
         values={password}
-        button={{ name: "Crear Contraseña", type: "submit",onClick: () => router.push("/3"), }}
+        button={{
+          name: "Crear Contraseña",
+          type: "submit"
+        }}
         extraButton={{
           name: "salir",
           type: "button",

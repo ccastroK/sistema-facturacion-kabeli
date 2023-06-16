@@ -1,10 +1,4 @@
-import Link from "next/link"
+import { IAProps } from "@/interfaces/components/global-components.interface";
+import Link from "next/link";
 
-interface AProps {
-    name:string
-    url:string
-}
-
-export const A = ({name,url}:AProps) => (
-   <Link href={url}>{name}</Link>
-)
+export const A = ({ name, url }: IAProps) => <Link href={url}>{name}</Link>;

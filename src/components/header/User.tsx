@@ -1,20 +1,14 @@
 "use client";
 
+import { IUserProps } from "@/interfaces/components/global-components.interface";
 import { Profile } from "../shared/Profile";
-
-type UserProps = {
-  className: string;
-  profileClassName: string;
-  name: string;
-  role: string;
-};
 
 export const User = ({
   className,
   profileClassName,
   name,
   role,
-}: UserProps) => {
+}: IUserProps) => {
   return (
     <main className={className}>
       <Profile className={profileClassName} />

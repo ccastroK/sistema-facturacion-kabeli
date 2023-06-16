@@ -1,13 +1,8 @@
 "use client";
+import { IListItemProps } from "@/interfaces/components/side-bar.interface";
 import { faIcon } from "../shared/icons/fa-icons";
 
-type ListItemProps = {
-  className: string;
-  onlyIcon: boolean;
-  icon: string;
-  onClick: () => void;
-  name?: string;
-};
+
 
 export const ListItem = ({
   className,
@@ -15,7 +10,7 @@ export const ListItem = ({
   icon,
   onClick,
   name,
-}: ListItemProps) => {
+}: IListItemProps) => {
   return (
     <li className={className} onClick={onClick}>
       <main>

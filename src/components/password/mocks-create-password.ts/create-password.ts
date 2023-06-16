@@ -1,4 +1,4 @@
-export const sendEmailMock: any[] = [
+export const sendEmailMock: any[] = [//tecnical debt
     {
       id: 1,
       name: "email",
@@ -9,7 +9,7 @@ export const sendEmailMock: any[] = [
     },
 ];
 
-export const CreatePasswordMock: any[] = [
+export const CreatePasswordMock: any[] = [//tecnical debt
   {
     id: 1,
     name: "password",
@@ -19,7 +19,7 @@ export const CreatePasswordMock: any[] = [
     value: "",
   },
   {
-    id: 1,
+    id: 2,
     name: "repassord",
     label: "Confirma tu contraseña",
     placeholder: "************",

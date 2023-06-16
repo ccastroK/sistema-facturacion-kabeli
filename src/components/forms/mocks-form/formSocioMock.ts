@@ -1,4 +1,4 @@
-export const formSocioMock: any[] = [
+export const formSocioMock: any[] = [//tecnical debt
   {
     id: 1,
     name: "Nombre",

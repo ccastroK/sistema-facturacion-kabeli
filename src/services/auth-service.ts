@@ -1,16 +1,21 @@
-import { IUserLoged } from "@/interfaces/user-loged.interface";
 import { Fetcher } from "./fetcher-service";
 import { HTTP_METHODS } from "next/dist/server/web/http";
 import { JWT } from "next-auth/jwt";
-import { Account, Profile, User } from "next-auth";
-import { AdapterUser } from "next-auth/adapters";
+import {
+  IJwt,
+  ILoginProviders,
+  IUserLoged,
+} from "@/interfaces/auth/auth.interface";
+import { RequestInternal } from "next-auth";
 
 const authorize = async (
-  credentials: Record<"email" | "password", string> | undefined
+  credentials: Record<"email" | "password", string> | undefined,
+  req?: Pick<RequestInternal, "headers" | "body" | "query" | "method">,
+  provider: string = "credentials"
 ): Promise<IUserLoged | null> => {
   const url = "http://localhost:4000/auth/login";
-  const body = JSON.stringify(credentials);
-
+  const body = JSON.stringify({ ...credentials, provider: provider });
+  console.log(body);
   let result: IUserLoged | null = null;
 
   const response: IUserLoged = await Fetcher<IUserLoged>(
@@ -31,46 +36,24 @@ const session = ({ token, session }: any) => {
     token: token.token,
   };
 };
-interface IJwt {
-  token: JWT;
-  user: User | AdapterUser;
-  account: Account | null;
-  profile?: Profile | undefined;
-  trigger?: "signIn" | "signUp" | "update" | undefined;
-  isNewUser?: boolean | undefined;
-  session?: any;
-}
 
 const loginProviders = {
   google: async ({ email }: ILoginProviders): Promise<IUserLoged> => {
-    console.log(email);
-    const dbUser = await authorize({ email: email } as Record<
-      "email" | "password",
-      string
-    >);
+    const provider: string = "google";
+    const dbUser = await authorize(
+      { email: email } as Record<"email" | "password", string>,
+      undefined,
+      provider
+    );
     return dbUser as IUserLoged;
   },
   credentials: ({ user }: ILoginProviders): IUserLoged => user as IUserLoged,
 };
 
-interface ILoginProviders {
-  email?: string | null | undefined;
-  user?: User | AdapterUser;
-}
-
 type loginProvierKey = keyof typeof loginProviders;
 
 const jwt = async ({ account, user, token }: IJwt) => {
   let cookie: JWT | IUserLoged = token;
-  // if (account?.provider === "google") {
-  //   const dbUser = await authorize({ email: user.email } as Record<
-  //     "email" | "password",
-  //     string
-  //   >);
-  //   cookie = dbUser as IUserLoged;
-  // } else if (account?.provider === "credentials") {
-  //   cookie = user as IUserLoged;
-  // }
   cookie = account?.provider
     ? await loginProviders[account.provider as loginProvierKey]({
         email: user?.email,

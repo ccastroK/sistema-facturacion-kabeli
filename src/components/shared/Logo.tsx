@@ -1,12 +1,8 @@
 "use client";
-type LogoProps = {
-  src: string;
-  alt: string;
-  onClick: () => void;
-  className?: string;
-};
 
-export const Logo = ({ src, alt, onClick, className }: LogoProps) => {
+import { ILogoProps } from "@/interfaces/components/global-components.interface";
+
+export const Logo = ({ src, alt, onClick, className }: ILogoProps) => {
   return (
     <figure className={className}>
       <a onClick={onClick}>

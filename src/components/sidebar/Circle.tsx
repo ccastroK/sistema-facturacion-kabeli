@@ -1,9 +1,7 @@
 "use client";
-import styles from "./SideBarStyle.module.css";
-type CircleProps = {
-  className: string;
-};
 
-export const Circle = ({ className }: CircleProps) => {
+import { ICircleProps } from "@/interfaces/components/side-bar.interface";
+
+export const Circle = ({ className }: ICircleProps) => {
   return <main className={className} />;
 };

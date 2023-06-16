@@ -5,16 +5,21 @@ import { Logo } from "../../shared/Logo";
 import { CustomForm } from "../../shared/forms/custom-form";
 import { sendEmailMock } from "../mocks-create-password.ts/create-password";
 import { useRouter } from "next/navigation";
+import { EmailService } from "@/services/send-email";
 
 export const SendEmailView = () => {
-  const router = useRouter();
   const [email, setEmail] = useState<any[]>([]);
   const setNewEmail = (newDataPassword: any[]) => {
     setEmail([...newDataPassword]);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const router = useRouter();
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const sendEmail = email[0].value;
+    await EmailService({sendEmail});//tecnical debt, mensaje hacia el usuario de correo enviado correctamente
+    router.push('/login');
   };
 
 
@@ -31,7 +36,7 @@ export const SendEmailView = () => {
         onSubmit={handleSubmit}
         setValues={setNewEmail}
         values={email}
-        button={{ name: "Enviar enlace", type: "submit", onClick : ()=>  router.push("/2") }}
+        button={{ name: "Enviar enlace", type: "submit"}}
         extraButton={{ name: "salir", type: "button", onClick : ()=>  router.push("/login")} }
       />
     </main>

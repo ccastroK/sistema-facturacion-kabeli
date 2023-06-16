@@ -1,12 +1,7 @@
-
-type ButtonProps = {
-    name:string;
-    classname:string;
-    nameA:string
-}
+import {IButtonProps} from '@/interfaces/components/login.interface';
 
 
-export const ButtonLoggin = ({classname,name,nameA}:ButtonProps) => {
+export const ButtonLoggin = ({classname,name,nameA}:IButtonProps) => {
     return (
         <section className={classname} >
             <button type="submit">{name}</button>

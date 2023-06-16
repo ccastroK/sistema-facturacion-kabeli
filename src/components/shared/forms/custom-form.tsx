@@ -1,24 +1,14 @@
 import { ChangeEvent, FormEvent } from "react";
 import { customInput } from "./custom-input";
-import { IInput } from "../interfaces/forms/inputs/input-interface";
 import { Button } from "../buttons/Button";
-import { IButton } from "../interfaces/buttons/button-interface";
-
-type CustomFormProps = {
-  inputs: any[];
-  values: any[];
-  setValues: (values: any[]) => void;
-  button: IButton;
-  onSubmit: (e: FormEvent) => void;
-  extraButton?: IButton;
-};
+import { CustomFormProps, IInput } from "@/interfaces/components/form.interface";
 
 const formatIputs = (
-  values: any[],
-  setValues: (values: any[]) => void,
+  values: any[],//tecnical debt
+  setValues: (values: any[]) => void,//tecnical debt
   inputData: IInput
 ) => {
-  const condition = (data: any) => inputData == data;
+  const condition = (data: any) => inputData == data;//tecnical debt
   if (!values.find(condition)) {
     values.push(inputData);
   }

@@ -2,11 +2,7 @@
 import styles from "./HeaderStyle.module.css";
 import { Icon } from "../shared/Icon";
 import { User } from "./User";
-
-type HeaderProps = {
-  userName: string;
-  role: string;
-};
+import { IHeaderProps } from "@/interfaces/components/global-components.interface";
 
 const Icons = {
   logo: {
@@ -28,7 +24,7 @@ const Icons = {
   className: styles.icons,
 };
 
-export const HeaderTemplate = ({ userName, role }: HeaderProps) => {
+export const HeaderTemplate = ({ userName, role }: IHeaderProps) => {
   return (
     <header className={styles.header}>
       <section>
