@@ -1,13 +1,13 @@
-import { ChangeEvent, FormEvent } from "react";
-import { customInput } from "./custom-input";
 import { IInput } from "../interfaces/forms/inputs/input-interface";
 import { Button } from "../buttons/Button";
-import { IButton } from "../interfaces/buttons/button-interface";
 import {
   IReferenceTextProps,
   ReferenceText,
   TReferState,
 } from "./reference-text";
+import { IButton } from "@/Domain/interfaces/components/global-components.interface";
+import { ChangeEvent, FormEvent } from "react";
+import { customInput } from "./custom-input";
 
 export interface IFormClasses {
   form: string;

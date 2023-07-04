@@ -1,12 +1,8 @@
 "use client";
 import styles from "./HeaderStyle.module.css";
-import { Icon } from "../shared/Icon";
+import { IHeaderProps } from "@/Domain/interfaces/components/global-components.interface";
 import { User } from "./User";
-
-type HeaderProps = {
-  userName: string;
-  role: string;
-};
+import { Icon } from "../shared/Icon";
 
 const Icons = {
   logo: {
@@ -28,7 +24,7 @@ const Icons = {
   className: styles.icons,
 };
 
-export const HeaderTemplate = ({ userName, role }: HeaderProps) => {
+export const HeaderTemplate = ({ userName, role }: IHeaderProps) => {
   return (
     <header className={styles.header}>
       <section>

@@ -1,12 +1,5 @@
-
-type WelcomeProps = {
-    title:string,
-    subtitle:string,
-    className:string
-}
-
-
-export const Welcome = ({title,className,subtitle}:WelcomeProps) => {
+import { IWelcomeProps } from "@/Domain/interfaces/components/login.interface";
+export const Welcome = ({title,className,subtitle}:IWelcomeProps) => {
   return <>
     <section className={className}>
         <h1>{title}</h1>

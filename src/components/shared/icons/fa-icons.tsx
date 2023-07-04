@@ -10,6 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCircleCheck,
+  faCircleXmark,
+} from "@fortawesome/free-regular-svg-icons";
 config.autoAddCss = false;
 
 interface IFaIcon {
@@ -25,6 +30,9 @@ const faIcons = {
   faChevronLeft,
   faChevronRight,
   faInfoCircle,
+  faGoogle,
+  faCircleCheck,
+  faCircleXmark,
 };
 
 type ObjectKey = keyof typeof FaIcon;

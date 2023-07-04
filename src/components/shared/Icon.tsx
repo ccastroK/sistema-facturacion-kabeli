@@ -1,12 +1,8 @@
-"use client"
-type IconProps = {
-  src: string;
-  className: string;
-  alt: string;
-  onClick: () => void;
-};
+"use client";
 
-export const Icon = ({ src, className, alt, onClick }: IconProps) => {
+import { IIconProps } from "@/Domain/interfaces/components/global-components.interface";
+
+export const Icon = ({ src, className, alt, onClick }: IIconProps) => {
   return (
     <figure className={className}>
       <a onClick={onClick}>

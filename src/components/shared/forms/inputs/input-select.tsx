@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { IInput } from "../../interfaces/forms/inputs/input-interface";
+import { IInput } from "@/Domain/interfaces/components/form.interface";
+
+
 
 export const InputSelect = ({ id, value, options, onChange }: IInput) => {
   return (

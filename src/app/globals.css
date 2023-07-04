@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet');
 :root{
     --primary: #4FAE32;
     --hover:#3BC211;
@@ -18,11 +18,12 @@
     --state-background-atention: #FFF5E5;
     --state-background-error: #FFECEC;
     --state-background-info: #D7E4F5;
+    --transparent: rgba(0,0,0,0);
   }
   
 body{
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: row;
     height: 100vh;

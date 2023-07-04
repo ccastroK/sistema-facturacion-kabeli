@@ -1,8 +1,5 @@
-"use client";
-type ProfileProps = {
-  className: string;
-};
+import { IProfileProps } from "@/Domain/interfaces/components/global-components.interface";
 
-export const Profile = ({ className }: ProfileProps) => {
+export const Profile = ({ className }: IProfileProps) => {
   return <main className={className}></main>;
 };
