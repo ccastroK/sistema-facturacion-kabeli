@@ -1,6 +1,8 @@
 "use client";
 
-import { IInput } from "@/interfaces/components/form.interface";
+import { IInput } from "@/Domain/interfaces/components/form.interface";
+
+
 
 
 export const InputText = ({

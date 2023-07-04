@@ -1,8 +1,8 @@
 "use client";
 import styles from "./HeaderStyle.module.css";
-import { Icon } from "../shared/Icon";
+import { IHeaderProps } from "@/Domain/interfaces/components/global-components.interface";
 import { User } from "./User";
-import { IHeaderProps } from "@/interfaces/components/global-components.interface";
+import { Icon } from "../shared/Icon";
 
 const Icons = {
   logo: {

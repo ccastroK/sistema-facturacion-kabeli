@@ -1,4 +1,4 @@
-import { ICustomListProp } from "@/interfaces/components/global-components.interface";
+import { ICustomListProp } from "@/Domain/interfaces/components/global-components.interface";
 
 export const CustomList = ({ item, title, className }: ICustomListProp) => (
   <section className={className}>

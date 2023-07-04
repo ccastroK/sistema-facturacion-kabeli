@@ -1,6 +1,8 @@
 "use client";
 
-import { ILogoProps } from "@/interfaces/components/global-components.interface";
+import { ILogoProps } from "@/Domain/interfaces/components/global-components.interface";
+
+
 
 export const Logo = ({ src, alt, onClick, className }: ILogoProps) => {
   return (

@@ -1,5 +1,4 @@
-import { IWelcomeProps } from "@/interfaces/components/login.interface";
-
+import { IWelcomeProps } from "@/Domain/interfaces/components/login.interface";
 export const Welcome = ({title,className,subtitle}:IWelcomeProps) => {
   return <>
     <section className={className}>

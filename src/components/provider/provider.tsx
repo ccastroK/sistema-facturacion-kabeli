@@ -1,6 +1,7 @@
 "use client";
 
-import { INextAuthProps } from "@/interfaces/auth/auth.interface";
+
+import { INextAuthProps } from "@/Domain/interfaces/auth/auth.interface";
 import { SessionProvider } from "next-auth/react";
 
 export const NextAuthProvider = ({ children }: INextAuthProps) => {

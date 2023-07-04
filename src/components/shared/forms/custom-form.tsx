@@ -1,7 +1,8 @@
 import { ChangeEvent, FormEvent } from "react";
 import { customInput } from "./custom-input";
-import { Button } from "../buttons/Button";
-import { CustomFormProps, IInput } from "@/interfaces/components/form.interface";
+import { Button } from "../buttons/button";
+import { CustomFormProps, IInput } from "@/Domain/interfaces/components/form.interface";
+
 
 const formatIputs = (
   values: any[],//tecnical debt

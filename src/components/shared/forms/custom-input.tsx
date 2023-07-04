@@ -1,16 +1,6 @@
-import { IInput } from "@/interfaces/components/form.interface";
-import { InputNumber } from "./inputs/input-number";
-import { InputSelect } from "./inputs/input-select";
-import { InputText } from "./inputs/input-text";
-
-const inputType = {
-  text: (inputProps: IInput) => InputText(inputProps),
-  number: (inputProps: IInput) => InputNumber(inputProps),
-  password: (inputProps: IInput) => InputText(inputProps),
-  select: (inputProps: IInput) => InputSelect(inputProps),
-};
-
-type ObjectKey = keyof typeof inputType;
+import { IInput } from "@/Domain/interfaces/components/form.interface";
+import { ObjectKey } from "@/Domain/type/input-type";
+import { inputType } from "@/Domain/mappers/input-type.mapper";
 
 export const customInput = (inputProps: IInput) => (
   <section className={inputProps.classname} key={inputProps.id}>

@@ -1,6 +1,5 @@
 "use client";
-
-import { IUserProps } from "@/interfaces/components/global-components.interface";
+import { IUserProps } from "@/Domain/interfaces/components/global-components.interface";
 import { Profile } from "../shared/Profile";
 
 export const User = ({

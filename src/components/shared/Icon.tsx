@@ -1,6 +1,6 @@
 "use client";
 
-import { IIconProps } from "@/interfaces/components/global-components.interface";
+import { IIconProps } from "@/Domain/interfaces/components/global-components.interface";
 
 export const Icon = ({ src, className, alt, onClick }: IIconProps) => {
   return (

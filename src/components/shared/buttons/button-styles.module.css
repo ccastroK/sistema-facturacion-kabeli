@@ -1,0 +1,8 @@
+.enabled{
+    background-color: var(--hover);
+    cursor: pointer;
+}
+.disabled{
+    background-color: var(--grayscale-disable);
+    cursor: not-allowed;
+}
