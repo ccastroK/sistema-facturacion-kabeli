@@ -2,10 +2,10 @@
 import { useState } from "react";
 
 import styles from "./SideBarStyle.module.css";
-import { ListItem } from "./ListItem";
 
 import { menuItemList } from "./mocks/menuListMock";
 import { Logo } from "../shared/Logo";
+import { List } from "./List";
 
 export const SideBar = () => {
   const [items, setItems] = useState(menuItemList);
@@ -30,36 +30,23 @@ export const SideBar = () => {
         className={onlyIcon ? styles.logoIcon : styles.logo}
         onClick={() => {}}
       />
-      <ul>
-        <ListItem
-          className={
-            onlyIcon
-              ? `${styles.listItem}`
-              : `${styles.listItem} ${styles.listInactive} ${styles.rowItem}`
-          }
-          onlyIcon={onlyIcon}
-          icon={onlyIcon ? "faChevronRight" : "faChevronLeft"}
-          onClick={() => setOnlyIcon(!onlyIcon)}
-        />
-        {items.map(({ id, selected, name, icon }) => (
-          <ListItem
-            onClick={() => handleCLick(id)}
-            onlyIcon={onlyIcon}
-            icon={icon}
-            key={id}
-            className={
-              onlyIcon
-                ? `${styles.listItem} ${styles.listIcon} ${
-                    selected ? styles.selectedIcon : ""
-                  }`
-                : `${styles.listItem} ${styles.listText} ${
-                    selected ? styles.selectedItem : ""
-                  }`
-            }
-            name={name}
-          />
-        ))}
-      </ul>
+      <List
+        items={items}
+        classNameSelected={onlyIcon ? styles.selectedIcon : styles.selectedText}
+        className={
+          onlyIcon
+            ? `${styles.listItem} ${styles.listIcon}`
+            : `${styles.listItem} ${styles.listText}`
+        }
+        onlyIcon={onlyIcon}
+        onClick={handleCLick}
+        setOnlyIcon={setOnlyIcon}
+        rowItem={
+          onlyIcon
+            ? `${styles.listItem} ${styles.listIcon}`
+            : `${styles.listItem} ${styles.rowItem} `
+        }
+      />
     </aside>
   );
 };

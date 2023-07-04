@@ -2,17 +2,16 @@
 import { Title } from "@/components/shared/Title";
 import styles from "../LoginStyle.module.css";
 import { Welcome } from "../loginComponents/Welcome";
-import { InputText } from "@/components/forms/inputs/inputText";
 import { FormEvent, useState, ChangeEvent } from "react";
 import { signIn } from "next-auth/react";
-import { ButtonLoggin } from "../loginComponents/ButtonLogin";
 import { CustomForm } from "@/components/shared/forms/custom-form";
 import { loginFormMock } from "../mocks-login/login";
 import { findIndexForm } from "@/components/shared/utils/forms";
 
 export const LogInView = () => {
-  const [dataLogin, setDataLogin] = useState<any[]>([]);
+  const [dataLogin, setDataLogin] = useState<any[]>([]); // tecnical debt
   const setNewDataLogin = (newDataLogin: any[]) => {
+    // tecnical debt
     setDataLogin([...newDataLogin]);
   };
 
@@ -36,6 +35,18 @@ export const LogInView = () => {
         />
         <h6>Digamos que existe el boton de google</h6>
         <CustomForm
+          classes={{
+            form: styles.formDouble,
+            inputsContainer: styles.inputsContainer,
+            buttonsContainer: styles.buttonsContainer,
+            referenceText: {
+              success: styles.referenceSuccess,
+              info: styles.referenceInfo,
+              error: styles.referenceError,
+              warning: styles.referenceWarning,
+              none: "",
+            },
+          }}
           inputs={loginFormMock}
           values={dataLogin}
           setValues={setNewDataLogin}

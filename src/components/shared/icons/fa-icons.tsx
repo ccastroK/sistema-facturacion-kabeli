@@ -1,28 +1,34 @@
 import {
-  faUserGroup,
   faTableColumns,
+  faUsers,
   faBriefcase,
-  faCity,
-  faScroll,
+  faBuilding,
   faChevronLeft,
+  faCashRegister,
   faChevronRight,
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 
+interface IFaIcon {
+  icon: string;
+}
+
 const faIcons = {
-  faUserGroup,
+  faUsers,
   faTableColumns,
   faBriefcase,
-  faCity,
-  faScroll,
+  faBuilding,
+  faCashRegister,
   faChevronLeft,
   faChevronRight,
+  faInfoCircle,
 };
 
-type ObjectKey = keyof typeof faIcon;
+type ObjectKey = keyof typeof FaIcon;
 
-export const faIcon = (icon: string) => (
+export const FaIcon = ({ icon }: IFaIcon) => (
   <FontAwesomeIcon icon={faIcons[icon as ObjectKey]} />
 );

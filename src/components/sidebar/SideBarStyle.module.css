@@ -78,17 +78,17 @@
   border: none;
 }
 
-.selectedItem{
+.selectedText{
   border-right: 2px solid var(--primary);
   color: var(--primary);
 }
 
-.selectedItem:hover{
+.selectedText:hover{
   border-right: 2px solid var(--hover);
   color: var(--hover);
 }
 
-.selectedItem > main > article{
+.selectedText > main > article{
   font-weight: 700;
 }
 

@@ -1,5 +1,5 @@
 "use client";
-import { faIcon } from "../shared/icons/fa-icons";
+import { FaIcon } from "../shared/icons/fa-icons";
 
 type ListItemProps = {
   className: string;
@@ -19,7 +19,7 @@ export const ListItem = ({
   return (
     <li className={className} onClick={onClick}>
       <main>
-        {faIcon(icon)}
+        {<FaIcon icon={icon} />}
         {!onlyIcon ? name ? <article>{name}</article> : null : null}
       </main>
     </li>

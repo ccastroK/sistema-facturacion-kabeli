@@ -3,51 +3,119 @@ import { customInput } from "./custom-input";
 import { IInput } from "../interfaces/forms/inputs/input-interface";
 import { Button } from "../buttons/Button";
 import { IButton } from "../interfaces/buttons/button-interface";
+import {
+  IReferenceTextProps,
+  ReferenceText,
+  TReferState,
+} from "./reference-text";
 
-type CustomFormProps = {
-  inputs: any[];
-  values: any[];
-  setValues: (values: any[]) => void;
+export interface IFormClasses {
+  form: string;
+  inputsContainer: string;
+  buttonsContainer: string;
+  referenceText: IReferenceState;
+}
+
+export interface IReferenceState {
+  none: string;
+  success: string;
+  info: string;
+  error: string;
+  warning: string;
+}
+
+export interface CustomFormProps {
+  inputs: any[]; // tecnical debt
+  values: any[]; // tecnical debt
   button: IButton;
+  setValues: (values: any[]) => void; // tecnical debt
   onSubmit: (e: FormEvent) => void;
-  extraButton?: IButton;
-};
 
-const formatIputs = (
-  values: any[],
-  setValues: (values: any[]) => void,
+  classes: IFormClasses;
+  referenceTexts?: IReferenceTextProps[];
+  extraButton?: IButton;
+}
+
+export const formatIputs = (
+  values: any[], // tecnical debt
+  classes: IFormClasses,
+  setValues: (values: any[]) => void, // tecnical debt
   inputData: IInput
 ) => {
-  const condition = (data: any) => inputData == data;
+  const condition = (data: any) => inputData == data; // tecnical debt
+  type referenceTextsKey = keyof typeof inputData.referenceTexts;
   if (!values.find(condition)) {
     values.push(inputData);
   }
   const valueIndex = values.findIndex(condition);
   inputData = {
     ...inputData,
-    value: values[valueIndex].value,
-    onChange: (event: ChangeEvent<HTMLInputElement>) => {
+    referenceTexts:
+      inputData.referenceTexts &&
+      values[valueIndex].referenceTexts.map(
+        (referenceText: IReferenceTextProps) => {
+          return {
+            ...referenceText,
+            stateClassName:
+              classes.referenceText[referenceText.state as referenceTextsKey],
+          };
+        }
+      ),
+    onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const newValue = event.target.value;
-      values[valueIndex].value = newValue;
+      const state = validateInput({ newValue, type: values[valueIndex].type });
+      values[valueIndex].value =
+        state == "success" ? newValue : values[valueIndex].value;
       setValues(values);
     },
   };
   return customInput(inputData);
 };
+export interface IValidateInputData {
+  newValue: any; // tecnical debt
+  type: string;
+}
+
+export const inputValidations = {
+  text: ({ newValue }: IValidateInputData) => {
+    const stringValue = newValue as String;
+    let match = new RegExp("[a-z0-9]");
+    console.log(stringValue.match(match));
+  },
+  number: (data: IValidateInputData) => {},
+  password: (data: IValidateInputData) => {},
+  select: (data: IValidateInputData) => {},
+};
+
+const validateInput = ({}: IValidateInputData): TReferState => {
+  return "success";
+};
 
 export const CustomForm = ({
   inputs,
-  setValues,
   values,
   button,
-  onSubmit,
+  referenceTexts,
   extraButton,
+  classes,
+  setValues,
+  onSubmit,
 }: CustomFormProps) => {
   return (
-    <form onSubmit={onSubmit}>
-      {inputs.map((inputData) => formatIputs(values, setValues, inputData))}
-      {extraButton ? Button(extraButton) : null}
-      {Button(button)}
+    <form className={classes.form} onSubmit={onSubmit}>
+      <article className={classes.inputsContainer}>
+        {inputs.map((inputData) =>
+          formatIputs(values, classes, setValues, inputData)
+        )}
+        {referenceTexts &&
+          referenceTexts.map((referenceTexts: IReferenceTextProps, key) => (
+            <ReferenceText key={key} {...referenceTexts} />
+          ))}
+      </article>
+      <article className={classes.buttonsContainer}>
+        {extraButton && Button(extraButton)}
+        {Button(button)}
+      </article>
     </form>
   );
 };

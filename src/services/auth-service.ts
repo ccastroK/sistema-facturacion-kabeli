@@ -2,7 +2,7 @@ import { IUserLoged } from "@/interfaces/user-loged.interface";
 import { LogIn } from "./login-service";
 
 
-const authorize = async (credentials: any) => {
+const authorize = async (credentials: any) => {  // tecnical debt
   const user: IUserLoged = await LogIn(credentials);
 
   const userString = JSON.stringify(user.data);
@@ -17,7 +17,7 @@ const authorize = async (credentials: any) => {
   return null;
 };
 
-const session = ({ session, token }: any) => {
+const session = ({ session, token }: any) => {  // tecnical debt
   return {
     ...session,
     user: {
@@ -29,9 +29,9 @@ const session = ({ session, token }: any) => {
   };
 };
 
-const jwt = ({ token, user }: any) => {
+const jwt = ({ token, user }: any) => {  // tecnical debt
   if (user) {
-    const u = user as unknown as any;
+    const u = user as unknown as any;  // tecnical debt
     return {
       ...token,
       user: u.user,
@@ -42,4 +42,4 @@ const jwt = ({ token, user }: any) => {
   return token;
 };
 
-export {authorize,session,jwt}
+export { authorize, session, jwt }

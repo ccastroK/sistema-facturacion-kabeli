@@ -1,13 +1,15 @@
-import { ChangeEvent } from "react";
+import { IReferenceTextProps } from "@/components/shared/forms/reference-text";
+import { ChangeEvent, ChangeEventHandler } from "react";
 
 export interface IInput {
   id: number;
-  classname: string;
+  className: string;
   name: string;
   label: string;
   type: string;
   placeholder: string;
   value: string;
   options?: string[];
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  referenceTexts?: IReferenceTextProps[],
+  onChange: ((event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void);
 }

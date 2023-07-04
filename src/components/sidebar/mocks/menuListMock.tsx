@@ -1,4 +1,5 @@
 export const menuItemList: any[] = [
+  // tecnical debt
   {
     id: 1,
     name: "Dashboard",
@@ -11,7 +12,7 @@ export const menuItemList: any[] = [
     name: "Socios",
     enabled: true,
     selected: false,
-    icon: "faUserGroup",
+    icon: "faUsers",
   },
   {
     id: 3,
@@ -25,13 +26,13 @@ export const menuItemList: any[] = [
     name: "Clientes",
     enabled: true,
     selected: false,
-    icon: "faCity",
+    icon: "faBuilding",
   },
   {
     id: 5,
     name: "Facturacion",
     enabled: true,
     selected: false,
-    icon: "faScroll",
+    icon: "faCashRegister",
   },
 ];

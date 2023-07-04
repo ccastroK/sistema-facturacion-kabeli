@@ -1,4 +1,4 @@
-import { CreateSocio } from "@/components/forms/formsView/create-socio";
+import { CreateSocio } from "@/components/forms-views/create-socio";
 
 const Socios = () => <CreateSocio />;
 
