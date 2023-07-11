@@ -7,6 +7,7 @@ import {
   faCashRegister,
   faChevronRight,
   faInfoCircle,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -33,6 +34,7 @@ const faIcons = {
   faGoogle,
   faCircleCheck,
   faCircleXmark,
+  faMagnifyingGlass,
 };
 
 type ObjectKey = keyof typeof FaIcon;

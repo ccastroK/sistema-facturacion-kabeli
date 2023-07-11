@@ -5,11 +5,11 @@ export interface IInput {
   id: number;
   className: string;
   name: string;
-  label: string;
   type: string;
   placeholder: string;
   value: string;
   options?: string[];
+  label?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   referenceTexts: Array<IReferenceTextProps>
 }
