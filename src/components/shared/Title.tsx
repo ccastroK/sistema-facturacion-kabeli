@@ -1,4 +1,4 @@
-import { ITitleProps } from "@/Domain/interfaces/components/global-components.interface";
+import { ITitleProps } from "@/domain/interfaces/components/global-components.interface";
 
 export const Title = ({ title, classname }: ITitleProps) => {
   return (

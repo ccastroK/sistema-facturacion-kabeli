@@ -1,9 +1,12 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { CreatePassword, RecoveryPassword } from "@/Application/password-service";
-import { INewPassowordProp } from "@/Domain/interfaces/components/new-password.interface";
-import { newPasswordFormKey } from "@/Domain/type/new-password.type";
-import { newPasswordForm } from "@/Domain/mappers/new-password.mapper";
+import {
+  CreatePassword,
+  RecoveryPassword,
+} from "@/Application/password-service";
+import { newPasswordFormKey } from "@/domain/type/new-password.type";
+import { newPasswordForm } from "@/domain/mappers/new-password.mapper";
+import { INewPassowordProp } from "@/domain/interfaces/components/new-password.interface";
 
 export const NewPassword = ({ token, type }: INewPassowordProp) => {
   const router = useRouter();
@@ -17,9 +20,10 @@ export const NewPassword = ({ token, type }: INewPassowordProp) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const newPassword = password[1].value as string;
-    const result = type === "create"
-      ? await CreatePassword({ token: token, newPassword: newPassword })
-      : await RecoveryPassword({ token: token, newPassword:newPassword });
+    const result =
+      type === "create"
+        ? await CreatePassword({ token: token, newPassword: newPassword })
+        : await RecoveryPassword({ token: token, newPassword: newPassword });
     result ? setBody("successful") : setBody("error");
   };
 

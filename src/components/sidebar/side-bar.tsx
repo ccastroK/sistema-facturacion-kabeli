@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import styles from "./SideBarStyle.module.css";
+import styles from "./sidebar-style.module.css";
 
 import { List } from "./List";
 import { menuItemList } from "./mocks/menu-list-mock";

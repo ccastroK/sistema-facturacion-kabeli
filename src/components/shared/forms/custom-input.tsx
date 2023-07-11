@@ -1,4 +1,4 @@
-import { IInput } from "@/Domain/interfaces/components/form.interface";
+import { IInput } from "@/domain/interfaces/components/form.interface";
 import { InputNumber } from "./inputs/input-number";
 import { InputSelect } from "./inputs/input-select";
 import { InputText } from "./inputs/input-text";

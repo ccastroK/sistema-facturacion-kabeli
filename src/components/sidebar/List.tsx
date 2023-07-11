@@ -1,7 +1,5 @@
 "use client";
-
-import { Dispatch, SetStateAction } from "react";
-import { ListItem } from "./ListItem";
+import { ListItem } from "./list-item";
 
 type ListProps = {
   classNameSelected: string;

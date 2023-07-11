@@ -10,8 +10,9 @@ import { CheckPassword } from "../../../Application/auth/auth-service";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/shared/buttons/Button";
 import { A } from "@/components/shared/A";
-import { Welcome } from "../loginComponents/Welcome";
 import { Logo } from "@/components/shared/logo";
+import { Welcome } from "../loginComponents/welcome";
+import { defaultClasses } from "@/components/forms-views/form-socio";
 
 export const LogInView = () => {
   const router = useRouter();
@@ -53,18 +54,7 @@ export const LogInView = () => {
         />
         <CustomSeparator />
         <CustomForm
-          classes={{
-            form: styles.formDouble,
-            inputsContainer: styles.inputsContainer,
-            buttonsContainer: styles.buttonsContainer,
-            referenceText: {
-              success: styles.referenceSuccess,
-              info: styles.referenceInfo,
-              error: styles.referenceError,
-              warning: styles.referenceWarning,
-              none: "",
-            },
-          }}
+          classes={defaultClasses}
           inputs={loginFormMock}
           values={dataLogin}
           setValues={setNewDataLogin}

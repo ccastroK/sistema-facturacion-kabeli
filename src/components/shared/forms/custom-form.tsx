@@ -1,13 +1,13 @@
-import { IInput } from "../interfaces/forms/inputs/input-interface";
 import { Button } from "../buttons/Button";
 import {
   IReferenceTextProps,
   ReferenceText,
   TReferState,
 } from "./reference-text";
-import { IButton } from "@/Domain/interfaces/components/global-components.interface";
 import { ChangeEvent, FormEvent } from "react";
 import { customInput } from "./custom-input";
+import { IButton } from "@/domain/interfaces/components/global-components.interface";
+import { IInput } from "@/domain/interfaces/components/form.interface";
 
 export interface IFormClasses {
   form: string;
@@ -25,10 +25,10 @@ export interface IReferenceState {
 }
 
 export interface CustomFormProps {
-  inputs: any[]; // tecnical debt
-  values: any[]; // tecnical debt
+  inputs: IInput[];
+  values: IInput[];
   button: IButton;
-  setValues: (values: any[]) => void; // tecnical debt
+  setValues: (values: IInput[]) => void;
   onSubmit: (e: FormEvent) => void;
 
   classes: IFormClasses;
@@ -36,18 +36,18 @@ export interface CustomFormProps {
   extraButton?: IButton;
 }
 
-export const formatIputs = (
-  values: any[], // tecnical debt
+export function formatIputs(
+  values: IInput[],
   classes: IFormClasses,
-  setValues: (values: any[]) => void, // tecnical debt
+  setValues: (values: IInput[]) => void,
   inputData: IInput
-) => {
-  const condition = (data: any) => inputData == data; // tecnical debt
-  type referenceTextsKey = keyof typeof inputData.referenceTexts;
+) {
+  const condition = (data: IInput) => inputData == data;
   if (!values.find(condition)) {
     values.push(inputData);
   }
   const valueIndex = values.findIndex(condition);
+  type referenceTextsKey = keyof typeof classes.referenceText;
   inputData = {
     ...inputData,
     referenceTexts:
@@ -62,33 +62,46 @@ export const formatIputs = (
         }
       ),
     onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      const newValue = event.target.value;
+      const newValue = event.currentTarget.value;
       const state = validateInput({ newValue, type: values[valueIndex].type });
-      values[valueIndex].value =
-        state == "success" ? newValue : values[valueIndex].value;
+      values[valueIndex].className =
+        classes.referenceText[state as referenceTextsKey];
+      values[valueIndex].value = newValue;
       setValues(values);
     },
   };
   return customInput(inputData);
-};
+}
 export interface IValidateInputData {
-  newValue: any; // tecnical debt
-  type: string;
+  newValue: string;
+  type?: string;
 }
 
 export const inputValidations = {
-  text: ({ newValue }: IValidateInputData) => {
-    const stringValue = newValue as String;
-    let match = new RegExp("[a-z0-9]");
-    console.log(stringValue.match(match));
+  text: ({ newValue }: IValidateInputData): TReferState => {
+    if (typeof newValue != "string") return "error";
+    const stringValue = newValue as string;
+    if (stringValue.trim().length === 0) return "none";
+    let match = new RegExp("[^A-Za-z 0-9]");
+    return !match.test(stringValue) ? "success" : "error";
   },
-  number: (data: IValidateInputData) => {},
-  password: (data: IValidateInputData) => {},
-  select: (data: IValidateInputData) => {},
+  number: ({ newValue }: IValidateInputData): TReferState => {
+    if (typeof newValue != "number") return "error";
+    const numberValue = newValue as number;
+    return numberValue > 0 ? "success" : "none";
+  },
+  password: (data: IValidateInputData): TReferState => {
+    return "none"; // tecnical debt add new password validation
+  },
+  select: ({ newValue }: IValidateInputData): TReferState => {
+    return newValue === undefined ? "error" : "none";
+  },
 };
 
-const validateInput = ({}: IValidateInputData): TReferState => {
-  return "success";
+type inputValidationsKey = keyof typeof inputValidations;
+
+const validateInput = ({ newValue, type }: IValidateInputData): TReferState => {
+  return inputValidations[type as inputValidationsKey]({ newValue });
 };
 
 export const CustomForm = ({

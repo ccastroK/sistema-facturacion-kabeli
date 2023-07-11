@@ -4,6 +4,19 @@ import { CustomForm } from "@/components/shared/forms/custom-form";
 import { formSocioMock } from "./mocks-form/formSocioMock";
 import { FormEvent, useState } from "react";
 
+export const defaultClasses = {
+  form: styles.formDouble,
+  inputsContainer: styles.inputsContainer,
+  buttonsContainer: styles.buttonsContainer,
+  referenceText: {
+    success: styles.referenceSuccess,
+    info: styles.referenceInfo,
+    error: styles.referenceError,
+    warning: styles.referenceWarning,
+    none: "",
+  },
+};
+
 export const FormSocio = () => {
   const [dataSocios, setDataSocios] = useState<any[]>([]); // tecnical debt
   const setNewDataSocios = (newDataSocio: any[]) => {
@@ -15,20 +28,10 @@ export const FormSocio = () => {
     // tecnical debt
     console.log(e);
   };
+
   return (
     <CustomForm
-      classes={{
-        form: styles.formDouble,
-        inputsContainer: styles.inputsContainer,
-        buttonsContainer: styles.buttonsContainer,
-        referenceText: {
-          success: styles.referenceSuccess,
-          info: styles.referenceInfo,
-          error: styles.referenceError,
-          warning: styles.referenceWarning,
-          none: "",
-        },
-      }}
+      classes={defaultClasses}
       inputs={formSocioMock}
       values={dataSocios}
       setValues={setNewDataSocios}

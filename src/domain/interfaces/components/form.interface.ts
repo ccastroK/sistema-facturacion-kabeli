@@ -14,9 +14,9 @@ export interface IInput {
   referenceTexts: Array<IReferenceTextProps>
 }
 export interface CustomFormProps {
-  inputs: any[];
-  values: any[];
-  setValues: (values: any[]) => void;
+  inputs: IInput[];
+  values: IInput[];
+  setValues: (values: IInput[]) => void;
   button: IButton;
   onSubmit: (e: FormEvent) => void;
   extraButton?: IButton;

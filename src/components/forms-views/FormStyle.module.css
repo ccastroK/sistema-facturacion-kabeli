@@ -16,7 +16,6 @@
 .inputsContainer > article{
     flex: 1;
     flex-basis: 48%;
-    margin-bottom: 5vh;
 }
 
 .inputsContainer > article > h6{
@@ -28,6 +27,7 @@
     color: var(--grayscale-black)
 }
 
+
 .inputsContainer > article > section > input{
     flex: 1;
     width: 100%;
@@ -37,6 +37,26 @@
     padding: 8px;
     min-height: 36px;
 }
+
+.referenceSuccess > section > input{
+    border: 1px solid var(--state-success) !important;
+    background-color: var(--state-background-success);
+}
+
+.referenceSuccess > section > input:focus-visible{
+    outline-color: var(--state-success) !important;
+}
+
+.referenceError > section > input{
+    border: 1px solid var(--state-error) !important;
+    background-color: var(--state-background-error);
+}
+
+.referenceError > section > input:focus-visible{
+    outline-color: var(--state-error) !important;
+}
+
+
 .referenceInfo{
     flex: 1;
     display: flex;

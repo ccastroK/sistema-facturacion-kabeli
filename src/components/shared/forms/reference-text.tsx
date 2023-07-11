@@ -9,7 +9,6 @@ export interface IReferenceTextProps {
 
 export type TReferState = "none" | "success" | "warning" | "info" | "error";
 export const ReferenceText = ({
-  state,
   stateClassName,
   text,
   icon,
