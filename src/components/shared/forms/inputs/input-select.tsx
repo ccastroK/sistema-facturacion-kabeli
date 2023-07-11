@@ -2,22 +2,29 @@
 
 import { IInput } from "@/Domain/interfaces/components/form.interface";
 
-
-
-export const InputSelect = ({ id, value, options, onChange }: IInput) => {
+export const InputSelect = ({
+  id,
+  value,
+  options,
+  onChange,
+  label,
+}: IInput) => {
   return (
-    <select key={id} value={value} onChange={onChange}>
-      {options != null ? (
-        options.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+    <section>
+      <h6>{label}</h6>
+      <select key={id} value={value} onChange={onChange}>
+        {options != null ? (
+          options.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))
+        ) : (
+          <option key="null" value="null">
+            -
           </option>
-        ))
-      ) : (
-        <option key="null" value="null">
-          -
-        </option>
-      )}
-    </select>
+        )}
+      </select>
+    </section>
   );
 };
