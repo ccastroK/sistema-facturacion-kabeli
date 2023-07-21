@@ -4,7 +4,7 @@ export const loginFormMock: any[] = [ // tecnical debt
     name: "email",
     label: "Correo electrónico",
     placeholder: "example@email.com",
-    type: "text",
+    type: "email",
     value: "",
   },
   {

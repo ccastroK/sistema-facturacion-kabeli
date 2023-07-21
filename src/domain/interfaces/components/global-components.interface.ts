@@ -1,6 +1,11 @@
+import { alertOptions } from "@/Domain/type/custom-alert-type";
+import { ReactNode } from "react";
+
 export interface ITitleProps {
   title: string;
   classname?: string;
+  onClick?: () => void;
+  icon?:string;
 }
 export interface IProfileProps {
   className: string;
@@ -56,4 +61,13 @@ export interface IViewMessage {
   Button: JSX.Element;
   text: string;
   classname: string;
+}
+
+export interface ICustomAlert {
+  type:alertOptions;
+  message:string;
+  onClick:() =>void
+}
+export interface ICustomContainer {
+  children:ReactNode;
 }

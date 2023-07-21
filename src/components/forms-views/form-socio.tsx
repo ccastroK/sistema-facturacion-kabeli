@@ -3,6 +3,13 @@ import styles from "./FormStyle.module.css";
 import { CustomForm } from "@/components/shared/forms/custom-form";
 import { formSocioMock } from "./mocks-form/formSocioMock";
 import { FormEvent, useState } from "react";
+import { useSession } from "next-auth/react";
+import { IInput } from "@/Domain/interfaces/components/form.interface";
+import { IPartnerDto } from '../../Domain/interfaces/partner/partner.interface';
+import { IPerson } from "@/Domain/interfaces/person/person.interface";
+import { CreatePartner } from "@/Application/partner-service";
+import { useRouter } from "next/navigation";
+
 
 export const defaultClasses = {
   form: styles.formDouble,
@@ -18,15 +25,32 @@ export const defaultClasses = {
 };
 
 export const FormSocio = () => {
-  const [dataSocios, setDataSocios] = useState<any[]>([]); // tecnical debt
-  const setNewDataSocios = (newDataSocio: any[]) => {
-    // tecnical debt
+  const [dataSocios, setDataSocios] = useState<IInput[]>([]);
+  const router = useRouter();
+
+  const { data: session } = useSession();
+  const userLogeg = session?.user as IPerson;
+  
+
+  const setNewDataSocios = (newDataSocio: IInput[]) => {
     setDataSocios([...newDataSocio]);
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    // tecnical debt
-    console.log(e);
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const newPartner : IPartnerDto = {
+      name: dataSocios[0].value,
+      personalMail: dataSocios[1].value,
+      administrativeMail: dataSocios[2].value ,
+      phone: dataSocios[3].value,
+      commune: dataSocios[4].value,
+      address: dataSocios[5].value,
+      birthdayDate: dataSocios[6].value,
+      position: "Gerente",
+      idAdmin: userLogeg.personId
+    };
+    const result = await CreatePartner(newPartner);
+    result ? router.push('/socios') : null;
   };
 
   return (

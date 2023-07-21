@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
+.footer {
+  background: rgba(255, 255, 255, 0.60);
+  display: flex;
+  font-family: 'Jost', sans-serif;
+  justify-content: space-between;
+  color:#718989 ;
+  font-weight: 400;
+}
+.logo {
+  width: 67px;
+  height: 22px;
+}
+
+.footer > section {
+    font-size: 12px;
+}
+
+.footer > section > a {
+    text-decoration-line: underline #718989;
+    color: #718989;
+}
+

@@ -19,11 +19,19 @@ export const formSocioMock: any[] = [ // tecnical debt
     label: "Correo electrónico personal",
     name: "email",
     placeholder: "nombre@gmail.com",
-    type: "text",
+    type: "email",
     value: "",
   },
   {
     id: 3,
+    label: "Correo electrónico Kabeli",
+    name: "emailAdministrative",
+    placeholder: "nombre@kabeli.cl",
+    type: "email",
+    value: ""
+  },
+  {
+    id: 4,
     label: "Teléfono",
     name: "phoneNumber",
     placeholder: "12345678",
@@ -31,7 +39,7 @@ export const formSocioMock: any[] = [ // tecnical debt
     value: "",
   },
   {
-    id: 4,
+    id: 5,
     label: "Comuna",
     name: "commune",
     type: "select",
@@ -40,7 +48,7 @@ export const formSocioMock: any[] = [ // tecnical debt
 
   },
   {
-    id: 5,
+    id: 6,
     label: "Dirección",
     name: "address",
     placeholder: "Dirección #0000",
@@ -48,7 +56,7 @@ export const formSocioMock: any[] = [ // tecnical debt
     value: "",
   },
   {
-    id: 6,
+    id: 7,
     label: "Fecha de nacimiento",
     name: "birthdate",
     type: "text",

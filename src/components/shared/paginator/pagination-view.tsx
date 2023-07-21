@@ -1,7 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { usePagination, DOTS } from "./usePagination";
 import style from './pagination-style.module.css';
-import { faIcon } from "../icons/fa-icons";
+import { FaIcon } from "../icons/fa-icons";
+
 
 export interface IPagination {
   onPageChange: (page: SetStateAction<number>) => void;
@@ -43,7 +44,7 @@ export const Pagination = ({
   return (
     <ul className={style.container} >
       <li onClick={onPrevious} className={`${style.item} ${currentPage === 1 ? style.disabled : ''}`}  >
-        {faIcon('faChevronLeft')}
+        <FaIcon icon="faChevronLeft"/>
       </li>
       {paginationRange.map((pageNumber, key) => {
         if (pageNumber === DOTS) {
@@ -57,7 +58,7 @@ export const Pagination = ({
         );
       })}
       <li className={`${style.item} ${currentPage === Number.parseInt(lastPage) ? style.disabled : ''}`} onClick={onNext}>
-        {faIcon('faChevronRight')}
+        <FaIcon icon="faChevronRight" />
       </li>
     </ul>
   );

@@ -30,6 +30,8 @@ body{
 }
 
 .outlet{
+    margin-left: 32px;
+    margin-right: 40px;
     display: flex;
     flex-direction: column;
     flex: 19;

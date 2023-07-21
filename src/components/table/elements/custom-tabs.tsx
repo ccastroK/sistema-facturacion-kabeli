@@ -1,16 +1,22 @@
-import { ITab } from "./custom-table";
 
-export interface ICustomTab {
-  tabList: ITab[];
-  onClick: (e:React.MouseEvent<HTMLButtonElement>) => void;
-}
+import { ICustomTab } from '@/Domain/interfaces/components/table.interface';
+import style  from './custom-tab-style.module.css';
 
-export const CustomTab = ({ tabList,onClick }: ICustomTab) => {
+
+
+export const CustomTab = ({ tabList, onClick}: ICustomTab) => {
   return (
-    <>
-      {tabList.map(({name,state}, index) => (
-        <button style={{border:'none',backgroundColor:'white', color: state ? 'green' : 'grey'}} onClick={onClick} key={index}>{name}</button>
-      ))}
-    </>
+      <section className={style.tab}>
+        {tabList.map(({ name, state, count }, index) => (
+          <button
+            name={name} 
+            className= {state ? style.selected : style.notSelected}
+            onClick={onClick}
+            key={index}
+          >
+            { `${name} ${count ? '('+ count+')' : ''}`}
+          </button>
+        ))}
+      </section>
   );
 };

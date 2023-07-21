@@ -9,8 +9,9 @@ import { FormEvent } from "react";
 import { sendEmailMock } from "@/components/password/mocks-create-password/create-password";
 import { ViewMessage } from "@/components/shared/message/view-message";
 import { Title } from "@/components/shared/title";
-import { faIcon } from "@/components/shared/icons/fa-icons";
-import { Button } from "@/components/shared/buttons/button";
+import { defaultClasses } from "@/components/forms-views/form-socio";
+import { Button } from "@/components/shared/buttons/Button";
+import { FaIcon } from "@/components/shared/icons/fa-icons";
 
 export const sendEmailForm = {
     create: ({
@@ -41,6 +42,7 @@ export const sendEmailForm = {
                 type: "button",
                 onClick: () => router.push("/login"),
               }}
+              classes={defaultClasses}
             />
           }
         />
@@ -74,6 +76,7 @@ export const sendEmailForm = {
                 type: "button",
                 onClick: () => router.push("/login"),
               }}
+              classes={defaultClasses}
             />
           }
         />
@@ -84,7 +87,7 @@ export const sendEmailForm = {
         <ViewMessage
           Logo={<Logo alt="Logo Factify" src="/slykash.png" onClick={() => {}} />}
           Title={<Title title="Excelente !!!" />}
-          faIcon={faIcon("faCircleCheck")}
+          faIcon={<FaIcon icon="faCircleCheck" />}
           text="El correo fue enviado correctamente, por favor revisa la bandeja de entrada de tu correo"
           Button={
             <Button
@@ -103,7 +106,7 @@ export const sendEmailForm = {
         <ViewMessage
           Logo={<Logo alt="Logo Factify" src="/slykash.png" onClick={() => {}} />}
           Title={<Title title="Error !!!" />}
-          faIcon={faIcon("faCircleXmark")}
+          faIcon={<FaIcon icon="faCircleXmark" />}
           text="Hubo un error al momento de enviar el correo, por favor vuelve a intertarlo"
           Button={
             <Button

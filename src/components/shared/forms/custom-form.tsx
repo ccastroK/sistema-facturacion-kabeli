@@ -1,40 +1,16 @@
 import { Button } from "../buttons/Button";
-import {
-  IReferenceTextProps,
-  ReferenceText,
-  TReferState,
-} from "./reference-text";
-import { ChangeEvent, FormEvent } from "react";
+import { ReferenceText } from "./reference-text";
+import { ChangeEvent } from "react";
 import { customInput } from "./custom-input";
-import { IButton } from "@/domain/interfaces/components/global-components.interface";
-import { IInput } from "@/domain/interfaces/components/form.interface";
-
-export interface IFormClasses {
-  form: string;
-  inputsContainer: string;
-  buttonsContainer: string;
-  referenceText: IReferenceState;
-}
-
-export interface IReferenceState {
-  none: string;
-  success: string;
-  info: string;
-  error: string;
-  warning: string;
-}
-
-export interface CustomFormProps {
-  inputs: IInput[];
-  values: IInput[];
-  button: IButton;
-  setValues: (values: IInput[]) => void;
-  onSubmit: (e: FormEvent) => void;
-
-  classes: IFormClasses;
-  referenceTexts?: IReferenceTextProps[];
-  extraButton?: IButton;
-}
+import {
+  CustomFormProps,
+  IFormClasses,
+  IInput,
+  IReferenceTextProps,
+  IValidateInputData,
+} from "@/domain/interfaces/components/form.interface";
+import { TReferState, inputValidationsKey } from "@/Domain/type/form-type";
+import { inputValidations } from "@/Domain/mappers/custom-form.mapper";
 
 export function formatIputs(
   values: IInput[],
@@ -72,33 +48,6 @@ export function formatIputs(
   };
   return customInput(inputData);
 }
-export interface IValidateInputData {
-  newValue: string;
-  type?: string;
-}
-
-export const inputValidations = {
-  text: ({ newValue }: IValidateInputData): TReferState => {
-    if (typeof newValue != "string") return "error";
-    const stringValue = newValue as string;
-    if (stringValue.trim().length === 0) return "none";
-    let match = new RegExp("[^A-Za-z 0-9]");
-    return !match.test(stringValue) ? "success" : "error";
-  },
-  number: ({ newValue }: IValidateInputData): TReferState => {
-    if (typeof newValue != "number") return "error";
-    const numberValue = newValue as number;
-    return numberValue > 0 ? "success" : "none";
-  },
-  password: (data: IValidateInputData): TReferState => {
-    return "none"; // tecnical debt add new password validation
-  },
-  select: ({ newValue }: IValidateInputData): TReferState => {
-    return newValue === undefined ? "error" : "none";
-  },
-};
-
-type inputValidationsKey = keyof typeof inputValidations;
 
 const validateInput = ({ newValue, type }: IValidateInputData): TReferState => {
   return inputValidations[type as inputValidationsKey]({ newValue });

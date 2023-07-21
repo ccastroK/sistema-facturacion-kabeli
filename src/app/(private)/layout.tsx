@@ -1,7 +1,10 @@
+"use client"
 import "../globals.css";
 import { Inter } from "next/font/google";
 import { SideBar } from "@/components/sidebar/side-bar";
 import { HeaderTemplate } from "@/components/header/Header";
+import { SessionProvider } from "next-auth/react";
+import { Footer } from "@/components/footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,11 +20,13 @@ export default function PrivateLayout({
 }) {
   return (
     <>
-      <SideBar />
-      <main className="outlet">
-        <HeaderTemplate userName="Rodrigo Viveros" role="Administrador" />
-        <article>{children}</article>
-      </main>
+      <SessionProvider>
+        <SideBar />
+        <main className="outlet">
+          <HeaderTemplate userName="Rodrigo Viveros" role="Administrador" />
+          <article>{children}</article>
+        </main>
+      </SessionProvider>
     </>
   );
 }

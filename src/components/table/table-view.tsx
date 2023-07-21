@@ -1,51 +1,74 @@
-import { ChangeEvent, Dispatch, SetStateAction, useMemo, useState } from "react";
-import { CustomTable, ITab } from "./elements/custom-table";
-import { HEADER, dataFor3, dataForm, dataForm2, list } from "./mocks/mocks-table";
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from "react";
+import { CustomTable} from "./elements/custom-table";
+import {
+  HEADER,
+  TABLETABS,
+  dataFor3,
+  dataForm,
+  dataForm2,
+  list,
+} from "./mocks/mocks-table";
+import style from './table-view.module.css';
+import { CustomContainer } from "../shared/custom-cotainer/custom-container";
+import { Title } from '../shared/Title';
+import { ITab } from "@/Domain/interfaces/components/table.interface";
 
 export const Table = () => {
-
   const [editedData, setEditedData] = useState(dataForm);
-  const [dataSearch,setDataSearch] = useState('');
-  const [valueList,setValueList] = useState(list[0]);
-  
-
+  const [dataSearch, setDataSearch] = useState("");
+  const [valueList, setValueList] = useState(list[0]);
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
-    setDataSearch(newValue)
-  }
+    setDataSearch(newValue);
+  };
 
   const handleList = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     setValueList(newValue);
+  };
+
+  const styles = {
+    table: style.table,
+    search: style.search,
+    articlePag: style.articlePag,
+    inpSelect:style.inpSelect
   }
 
-
-
   return (
-    <CustomTable
-      data={editedData}
-      headers={HEADER}
-      tabsOptions={createTab(["Tab1", "Tab2", "Tab3"], setEditedData)}
-      dataSearch={dataSearch}
-      handleDataSearch={handleSearch}
-      optionList={list}
-      valueList={valueList}
-      handleList={handleList}
-    />
+    <CustomContainer>
+      <Title title={"Test"} classname={style.title} />
+      <CustomTable
+        data={editedData}
+        headers={HEADER}
+        tabsOptions={createTab(TABLETABS, setEditedData)}
+        dataSearch={dataSearch}
+        handleDataSearch={handleSearch}
+        optionList={list}
+        valueList={valueList}
+        handleList={handleList}
+        className={styles}
+      />
+    </CustomContainer>
   );
 };
 
 export const createTab = (
-  tabsOptions: string[],
+  tabsOptions: any[],
   setEditedData: Dispatch<SetStateAction<string[][]>>
 ): ITab[] => {
   const result = new Array<ITab>();
   tabsOptions.map((tab, index) => {
     const newTab: ITab = {
-      name: tab,
+      name: tab.name,
       state: index == 0 ? true : false,
-      changeData: () => setEditedData(dataTableMapper[tab as dataTableKey]),
+      count: tab.count,
+      changeData: () => setEditedData(dataTableMapper[tab.name as dataTableKey]),
     };
     result.push(newTab);
   });

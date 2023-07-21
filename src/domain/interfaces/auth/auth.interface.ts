@@ -18,8 +18,15 @@ export interface ILoginProviders {
 }
 export interface ICredentials {
   token: string;
-  newPassword: string;
+  newPassword: INewPassword;
 }
+
+
+export interface INewPassword{
+  newPassword:string;
+  confirmNewPassword:string;
+}
+
 export interface IRecoveryPassword {
   date: Date;
   status: number;

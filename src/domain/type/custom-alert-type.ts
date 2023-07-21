@@ -1,0 +1,1 @@
+export type alertOptions = "info" | "success"| "error"| "atention";

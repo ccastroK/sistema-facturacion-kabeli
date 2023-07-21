@@ -5,12 +5,14 @@ import {
   IRecoveryPassword,
 } from "@/Domain/interfaces/auth/auth.interface";
 
+
+
 export async function CreatePassword({
   token,
   newPassword,
 }: ICredentials): Promise<boolean> {
   try {
-    const body = JSON.stringify({ id: token, password: newPassword });
+    const body = JSON.stringify({ id: token, password: newPassword.newPassword,confirmPassword: newPassword.confirmNewPassword });
     const url = "http://localhost:4000/auth/create";
     const response = await Fetcher<IRecoveryPassword>(
       url,
@@ -30,7 +32,7 @@ export async function RecoveryPassword({
   newPassword,
 }: ICredentials): Promise<boolean> {
   try {
-    const body = JSON.stringify({ token: token, password: newPassword });
+    const body = JSON.stringify({ token: token,password: newPassword.newPassword,confirmPassword: newPassword.confirmNewPassword});
     const url = "http://localhost:4000/auth/recovery";
     const response = await Fetcher<IRecoveryPassword>(
       url,

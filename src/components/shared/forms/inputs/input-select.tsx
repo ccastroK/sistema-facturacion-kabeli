@@ -1,6 +1,6 @@
 "use client";
 
-import { IInput } from "@/Domain/interfaces/components/form.interface";
+import { IInput } from "@/domain/interfaces/components/form.interface";
 
 export const InputSelect = ({
   id,
@@ -11,7 +11,6 @@ export const InputSelect = ({
 }: IInput) => {
   return (
     <section>
-      <h6>{label}</h6>
       <select key={id} value={value} onChange={onChange}>
         {options != null ? (
           options.map((option, index) => (

@@ -1,28 +1,15 @@
-import { ChangeEvent,useMemo,useState } from "react";
+import { useMemo,useState } from "react";
 import { CustomTab } from "./custom-tabs";
 import { Table } from "./table";
 import { CustomSearch } from './custom-search';
 import { InputSelect } from "@/components/shared/forms/inputs/input-select";
 import Pagination from "@/components/shared/paginator/pagination-view";
+import { Title } from '../../shared/Title';
+import { ICustomTable, ITab } from "@/Domain/interfaces/components/table.interface";
 
-export interface ICustomTable {
-  tabsOptions: ITab[];
-  headers: string[];
-  data: any[][];
-  dataSearch:string;
-  handleDataSearch: (event: ChangeEvent<HTMLInputElement>) => void
-  optionList:string[];
-  valueList:string;
-  handleList:(event: ChangeEvent<HTMLInputElement>) => void
-}
 
-export interface ITab {
-  name: string;
-  state: boolean;
-  changeData: () => void;
-}
 
-export function CustomTable({ tabsOptions, headers, data,dataSearch,handleDataSearch,handleList,optionList,valueList }: ICustomTable) {
+export function CustomTable({ tabsOptions, headers, data,dataSearch,handleDataSearch,handleList,optionList,valueList,className }: ICustomTable) {
   const pageSize = 7;
   const [tabs, setTabs] = useState<ITab[]>(tabsOptions);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -48,14 +35,21 @@ export function CustomTable({ tabsOptions, headers, data,dataSearch,handleDataSe
 
   return (
     <>
-      <CustomTab
-        tabList={tabs}
-        onClick={(e) => handleTabs(e.currentTarget.innerHTML)}
-      />
-      <CustomSearch handleSearch={handleDataSearch} wordSearch={dataSearch}/>
-      <Table data={data} headers={headers} />
-      <InputSelect label="Ver" id={2} value={valueList} onChange={handleList} options={optionList} classname="" name="" placeholder="" type=""/>
-      <Pagination currentPage={currentPage} totalCount={40} pageSize={pageSize} onPageChange={(page) => setCurrentPage(page)}/>
+      <CustomTab onClick={(e) => handleTabs(e.currentTarget.name)} tabList={tabsOptions} />
+      <article className={className.search}>
+        <CustomSearch handleSearch={handleDataSearch} wordSearch={dataSearch} icon="faMagnifyingGlass" />
+      </article>
+      <Table className={className.table} data={data} headers={headers} />
+      <article className={className.articlePag}>
+        <section className={className.inpSelect}>
+          <Title title="Ver" classname=""/>
+          <InputSelect value={valueList} label="Ver" onChange={handleList} options={optionList} className="" id={1} name="" placeholder="" type="" />
+        </section>
+        <section>
+          <Pagination currentPage={currentPage} onPageChange={setCurrentPage} pageSize={pageSize} totalCount={50}  />
+        </section>
+      </article>
     </>
   );
 }
+

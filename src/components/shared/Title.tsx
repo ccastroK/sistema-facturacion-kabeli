@@ -1,9 +1,14 @@
-import { ITitleProps } from "@/domain/interfaces/components/global-components.interface";
+import { ITitleProps } from "@/Domain/interfaces/components/global-components.interface";
+import { FaIcon } from "./icons/fa-icons";
 
-export const Title = ({ title, classname }: ITitleProps) => {
+
+export const Title = ({ title, classname,icon,onClick }: ITitleProps) => {
   return (
     <>
-      <h1 className={classname}>{title}</h1>
+      <section className={classname}>
+        <h1>{title}</h1>
+        {icon ? <FaIcon icon={icon} onClick={onClick}/> : null}
+      </section>
     </>
   );
 };

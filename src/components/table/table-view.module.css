@@ -1,0 +1,121 @@
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table > thead {
+  text-align: left;
+  width: 100%;
+}
+
+.table > thead > tr {
+  display: flex;
+}
+
+.table > thead > tr > th {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 18px;
+  max-width: 130px;
+  font-size: 12px;
+  border-top: 1px solid var(--grayscale-grey);
+  border-bottom: 1px solid var(--grayscale-grey);
+  padding: 15px 10px;
+}
+
+.table > thead > tr > th > svg {
+  width: 16px;
+  height: 16px;
+  color: var(--grayscale-grey);
+  cursor: pointer;
+}
+
+.table > tbody > tr {
+  display: flex;
+}
+
+.table > tbody > tr > td {
+  width: 150px;
+  max-width: 130px;
+  border-bottom: 1px solid var(--grayscale-grey);
+  padding: 11.5px 16px;
+  padding-right: 4px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.table > tbody > tr > td > svg {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  color: var(--grayscale-grey);
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.title > h1 {
+  color: var(--grayscale-black);
+  margin: 0;
+  font-size: 16px;
+  padding: 10px 0px;
+  border-bottom: 1px solid var(--grayscale-light-grey);
+}
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0px 10px 0px;
+}
+
+.search > section {
+    position: relative;
+}
+
+.search > section > svg {
+  color: var(--grayscale-grey);
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+.search > section > input {
+    color: var(--grayscale-grey);
+    font-size: 14px;
+    border: 1px solid var(--grayscale-grey);
+    border-radius: 4px;
+    padding: 6px;
+}
+.search > section > input:focus{
+    outline: none;
+}
+
+
+.articlePag{
+    display: flex;
+    color: var(--grayscale-black);
+    justify-content: space-between;
+}
+
+.inpSelect {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inpSelect > section > h1  {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.inpSelect > section > select {
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--grayscale-grey);
+}

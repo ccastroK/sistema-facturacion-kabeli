@@ -7,9 +7,10 @@ import { CustomForm } from "@/components/shared/forms/custom-form";
 import styles from '@/components/shared/message/password-successful.module.css';
 import { INewPasswordForm } from "../interfaces/components/new-password.interface";
 import { ViewMessage } from "@/components/shared/message/view-message";
-import { faIcon } from "@/components/shared/icons/fa-icons";
-import { Button } from "@/components/shared/buttons/button";
-import { Title } from "@/components/shared/title";
+import { FaIcon} from "@/components/shared/icons/fa-icons";
+import { defaultClasses } from "@/components/forms-views/form-socio";
+import { Title } from "@/components/shared/Title";
+import { Button } from "@/components/shared/buttons/Button";
 
 export const newPasswordForm = {
   create: ({
@@ -43,6 +44,7 @@ export const newPasswordForm = {
               type: "button",
               onClick: () => router.push("/login"),
             }}
+            classes={defaultClasses}
           />
         }
         CustomList={
@@ -86,6 +88,7 @@ export const newPasswordForm = {
               type: "button",
               onClick: () => router.push("/login"),
             }}
+            classes={defaultClasses}
           />
         }
         CustomList={
@@ -103,7 +106,7 @@ export const newPasswordForm = {
       <ViewMessage
         Logo={<Logo alt="Logo Factify" src="/slykash.png" onClick={() => {}} />}
         Title={<Title title="Excelente !!!" />}
-        faIcon={faIcon("faCircleCheck")}
+        faIcon={<FaIcon icon="faCircleCheck" />}
         text="Haz creado tu contraseña con éxito, ahora puedes ingresar a Factfy"
         Button={
           <Button
@@ -121,7 +124,7 @@ export const newPasswordForm = {
       <ViewMessage
         Logo={<Logo alt="Logo Factify" src="/slykash.png" onClick={() => {}} />}
         Title={<Title title="Error !!!" />}
-        faIcon={faIcon("faCircleXmark")}
+        faIcon={<FaIcon icon="faCircleXmark" />}
         text="Hubo un error al momento de crear tu contraseña, por favor vuelve a intertarlo"
         Button={
           <Button

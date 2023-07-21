@@ -1,0 +1,141 @@
+.main {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main > section > section > h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0px;
+  margin-bottom: 15px;
+}
+
+.main > section > main {
+  padding: 8px 20px 32px 20px;
+}
+
+.barGrafic > h2{
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--grayscale-black);
+  border-bottom: 1px solid var(--grayscale-light-grey);
+  padding-bottom: 15px;
+}
+
+.tab{
+  display: flex;
+  justify-content: space-between;
+}
+
+.newSocio{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+}
+
+.tab > section > h1 {
+  font-size: 14px;
+  font-weight: 500;
+}
+.tab > section > svg {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.selected {
+  border-bottom: 3px solid var(--primary) !important;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.notSelected {
+  border-bottom: 1px solid var(--grayscale-black) !important ;
+  font-weight: 500;
+  color: var(--grayscale-black);
+}
+
+.grid {
+  color: var(--grayscale-black);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+
+.grid > main {
+  height: 180px;
+}
+
+.section1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--grayscale-light-grey);
+}
+
+.section1 > h1{
+  margin-bottom: 10px;
+}
+
+.section1 > svg {
+  color: var(--grayscale-grey);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.section2 {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: center;
+}
+
+.section2 > section > h2 {
+  display: flex;
+  font-size: 32px;
+  font-weight: 700;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.section2 > section > div {
+  width: 85px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 50px;
+  background-color: var(--grayscale-chip);
+  justify-content: center;
+}
+
+.section2 > section > div > h4 {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.section3 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  color: #6a7f99;
+}
+
+.section3 > h1 {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.section3 > svg {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}

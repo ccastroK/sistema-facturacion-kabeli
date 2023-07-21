@@ -1,5 +1,6 @@
-import { CreateSocio } from "@/components/forms-views/create-socio";
+import { PartnerDashboard } from "@/components/partner/partner-dashboard";
 
-const Socios = () => <CreateSocio />;
 
-export default Socios;
+const Page = () => <PartnerDashboard/>
+
+export default Page;
