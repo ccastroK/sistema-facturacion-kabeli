@@ -15,7 +15,7 @@ export const SideBar = () => {
       items.map((item) => ({ ...item, selected: id == item.id ? true : false }))
     );
   };
-
+  // CRW pasar a constantes (favor para Anibal <3)
   return (
     <aside
       className={

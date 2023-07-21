@@ -1,6 +1,5 @@
 "use client";
 
-
 import { INextAuthProps } from "@/Domain/interfaces/auth/auth.interface";
 import { SessionProvider } from "next-auth/react";
 

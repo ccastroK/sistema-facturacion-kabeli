@@ -1,12 +1,11 @@
-import { IButtonProps } from "@/Domain/interfaces/components/login.interface"
+import { IButtonProps } from "@/domain/interfaces/components/login.interface";
 
-
-
-export const ButtonLoggin = ({classname,name,nameA}:IButtonProps) => {
-    return (
-        <section className={classname} >
-            <button type="submit">{name}</button>
-            <a>{nameA}</a>
-        </section>
-    )
-}
+// CRW probar eliminarlo sino usar el botón genérico
+export const ButtonLoggin = ({ classname, name, nameA }: IButtonProps) => {
+  return (
+    <section className={classname}>
+      <button type="submit">{name}</button>
+      <a>{nameA}</a>
+    </section>
+  );
+};

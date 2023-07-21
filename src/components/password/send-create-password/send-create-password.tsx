@@ -1,6 +1,9 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { sendCreatePasswordEmail, sendRecoveryPasswordEmail } from "@/Application/send-email";
+import {
+  sendCreatePasswordEmail,
+  sendRecoveryPasswordEmail,
+} from "@/Application/send-email";
 import { ISendCreateProps } from "@/Domain/interfaces/components/send-email.interface";
 import { sendEmailFormKey } from "@/Domain/type/send-email.type";
 import { sendEmailForm } from "@/Domain/mappers/send-email.mapper";
@@ -8,6 +11,7 @@ import { sendEmailForm } from "@/Domain/mappers/send-email.mapper";
 export const SendCreatePassword = ({ type }: ISendCreateProps) => {
   const router = useRouter();
   const [body, setBody] = useState<string>(type);
+  // CRW eliminar los any
   const [email, setEmail] = useState<any[]>([]);
   const setNewEmail = (newDataPassword: any[]) => {
     setEmail([...newDataPassword]);
@@ -16,13 +20,13 @@ export const SendCreatePassword = ({ type }: ISendCreateProps) => {
     e.preventDefault();
     const sendEmail = email[0].value;
     const result = await sendCreatePasswordEmail({ sendEmail: sendEmail });
-    result.data ? setBody('successfull') : setBody('error');
+    result.data ? setBody("successfull") : setBody("error");
   };
   const handleSubmitForgot = async (e: FormEvent) => {
     e.preventDefault();
     const sendEmail = email[0].value;
     const result = await sendRecoveryPasswordEmail({ sendEmail: sendEmail });
-    result.data ? setBody('successfull') : setBody('error');
+    result.data ? setBody("successfull") : setBody("error");
   };
 
   return sendEmailForm[body as sendEmailFormKey]({

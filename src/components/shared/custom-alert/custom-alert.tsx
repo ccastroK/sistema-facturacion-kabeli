@@ -5,7 +5,7 @@ import {
   iconOptions,
   styleOptions,
 } from "@/Domain/constants/custom-alert.constants";
-
+// CRW ta bonito
 export const CustomAlert = ({ message, type, onClick }: ICustomAlert) => {
   return (
     <main className={`${style.alert}  ${styleOptions[type]}`}>

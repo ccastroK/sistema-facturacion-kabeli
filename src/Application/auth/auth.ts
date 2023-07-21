@@ -1,5 +1,5 @@
 import { authorize, jwt, session } from "@/Application/auth/auth-service";
-import { PAGES, SESSION } from "@/Domain/constants/auth";
+import { PAGES, SESSION } from "@/domain/constants/auth";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";

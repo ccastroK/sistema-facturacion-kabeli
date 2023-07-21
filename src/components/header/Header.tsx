@@ -1,13 +1,12 @@
 "use client";
-import { signOut } from "next-auth/react"
+import { signOut } from "next-auth/react";
 import { IHeaderProps } from "@/Domain/interfaces/components/global-components.interface";
 import styles from "./HeaderStyle.module.css";
-import { User } from "./user";
-import { FaIcon } from '../shared/icons/fa-icons';
+import { FaIcon } from "../shared/icons/fa-icons";
+import { User } from "./User";
 
 export const HeaderTemplate = ({ userName, role }: IHeaderProps) => {
-
-
+  // tecnical debt arreglar el llamado a user
   return (
     <header className={styles.header}>
       <section>
@@ -20,7 +19,13 @@ export const HeaderTemplate = ({ userName, role }: IHeaderProps) => {
             profileClassName: styles.circle,
           }}
         />
-        <FaIcon icon="faRightFromBracket" onClick={()=> signOut({callbackUrl:'http://localhost:3000/login'})} />
+        <FaIcon
+          icon="faRightFromBracket"
+          onClick={() =>
+            // CRW url dinámica .env
+            signOut({ callbackUrl: "http://localhost:3000/login" })
+          }
+        />
       </section>
     </header>
   );

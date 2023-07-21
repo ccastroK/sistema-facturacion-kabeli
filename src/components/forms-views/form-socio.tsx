@@ -5,12 +5,12 @@ import { formSocioMock } from "./mocks-form/formSocioMock";
 import { FormEvent, useState } from "react";
 import { useSession } from "next-auth/react";
 import { IInput } from "@/Domain/interfaces/components/form.interface";
-import { IPartnerDto } from '../../Domain/interfaces/partner/partner.interface';
 import { IPerson } from "@/Domain/interfaces/person/person.interface";
 import { CreatePartner } from "@/Application/partner-service";
 import { useRouter } from "next/navigation";
+import { IPartnerDto } from "@/Domain/interfaces/partner/partner.interface";
 
-
+// CRW hay que quitarlo de aquí <3
 export const defaultClasses = {
   form: styles.formDouble,
   inputsContainer: styles.inputsContainer,
@@ -30,7 +30,6 @@ export const FormSocio = () => {
 
   const { data: session } = useSession();
   const userLogeg = session?.user as IPerson;
-  
 
   const setNewDataSocios = (newDataSocio: IInput[]) => {
     setDataSocios([...newDataSocio]);
@@ -38,19 +37,20 @@ export const FormSocio = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const newPartner : IPartnerDto = {
+    // tecnical debt (Anibal) mejorar el form submit
+    const newPartner: IPartnerDto = {
       name: dataSocios[0].value,
       personalMail: dataSocios[1].value,
-      administrativeMail: dataSocios[2].value ,
+      administrativeMail: dataSocios[2].value,
       phone: dataSocios[3].value,
       commune: dataSocios[4].value,
       address: dataSocios[5].value,
       birthdayDate: dataSocios[6].value,
       position: "Gerente",
-      idAdmin: userLogeg.personId
+      idAdmin: userLogeg.personId,
     };
     const result = await CreatePartner(newPartner);
-    result ? router.push('/socios') : null;
+    result ? router.push("/socios") : null;
   };
 
   return (

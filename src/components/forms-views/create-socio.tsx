@@ -7,17 +7,23 @@ import styles from "./FormStyle.module.css";
 import { FormSocio } from "./form-socio";
 
 export const CreateSocio = () => {
+  const [alertState, setAlertState] = useState(true);
 
-  const [alertState,setAlertState] = useState(true);
+  const handleState = () => {
+    setAlertState(!alertState);
+  };
 
-  const handleState = () =>{
-    setAlertState(false)
-  }
-
+  // CRW añadir mensaje a constantes
   return (
     <>
       <Title classname={styles.title} title={"Socios / Nuevo Socio"}></Title>
-      {alertState ? <CustomAlert onClick={handleState} type="info" message="Al momento de crear un nuevo socio se le enviará un link de acceso."/> : null}
+      {alertState ? (
+        <CustomAlert
+          onClick={handleState}
+          type="info"
+          message="Al momento de crear un nuevo socio se le enviará un link de acceso."
+        />
+      ) : null}
       <CustomContainer>
         <h5>Datos</h5>
         <FormSocio />

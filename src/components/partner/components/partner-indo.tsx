@@ -6,10 +6,9 @@ import { CustomTab } from "@/components/table/elements/custom-tabs";
 import { useState } from "react";
 import { ITab } from "@/Domain/interfaces/components/table.interface";
 
-
-export const PartnerInfo = ({ dataPartner, styles, tabs}: IPartnerInfo) => {
+export const PartnerInfo = ({ dataPartner, styles, tabs }: IPartnerInfo) => {
   const [datatabs, setTabs] = useState<ITab[]>(tabs);
-
+  // CRW  sacar esto gracias <3
   const handleTabs = (nameTab: string): void => {
     const newTab = {
       ...tabs.find(({ name }) => name === nameTab),
@@ -22,17 +21,22 @@ export const PartnerInfo = ({ dataPartner, styles, tabs}: IPartnerInfo) => {
       }) as Array<ITab>
     );
   };
-
+  // CRW separar a un componente mayor la primera section
   return (
     <>
-      <section className={styles.tab} >
+      <section className={styles.tab}>
         <CustomTab
           onClick={(e) => handleTabs(e.currentTarget.name)}
           tabList={datatabs}
         />
-        <Title classname={styles.newSocio} title="Nuevo Socio" icon="faPlus" onClick={() => {}}  />
+        <Title
+          classname={styles.newSocio}
+          title="Nuevo Socio"
+          icon="faPlus"
+          onClick={() => {}}
+        />
       </section>
-      <section className={styles.grid} >
+      <section className={styles.grid}>
         {dataPartner.map((partner, key) => (
           <CustomContainer key={key}>
             <Title

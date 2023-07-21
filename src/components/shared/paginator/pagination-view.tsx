@@ -1,8 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { usePagination, DOTS } from "./usePagination";
-import style from './pagination-style.module.css';
+import style from "./pagination-style.module.css";
 import { FaIcon } from "../icons/fa-icons";
-
 
 export interface IPagination {
   onPageChange: (page: SetStateAction<number>) => void;
@@ -18,7 +17,7 @@ export const Pagination = ({
   onPageChange,
   pageSize,
   siblingCount = 1,
-  totalCount
+  totalCount,
 }: IPagination) => {
   const paginationRange = usePagination({
     currentPage,
@@ -32,7 +31,7 @@ export const Pagination = ({
   }
 
   const onNext = () => {
-    console.log(currentPage)
+    console.log(currentPage);
     onPageChange(currentPage + 1);
   };
 
@@ -42,22 +41,40 @@ export const Pagination = ({
 
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
-    <ul className={style.container} >
-      <li onClick={onPrevious} className={`${style.item} ${currentPage === 1 ? style.disabled : ''}`}  >
-        <FaIcon icon="faChevronLeft"/>
+    <ul className={style.container}>
+      <li
+        onClick={onPrevious}
+        className={`${style.item} ${currentPage === 1 ? style.disabled : ""}`}
+      >
+        <FaIcon icon="faChevronLeft" />
       </li>
       {paginationRange.map((pageNumber, key) => {
         if (pageNumber === DOTS) {
-          return <li key={key} className={`${style.item} ${style.dots}`}>&#8230;</li>;
+          return (
+            <li key={key} className={`${style.item} ${style.dots}`}>
+              &#8230;
+            </li>
+          );
         }
 
         return (
-          <li key={key} className={`${style.item} ${ Number.parseInt(pageNumber) === currentPage ? style.selected : ''}`} onClick={() => onPageChange(Number.parseInt(pageNumber))}>
+          <li
+            key={key}
+            className={`${style.item} ${
+              Number.parseInt(pageNumber) === currentPage ? style.selected : ""
+            }`}
+            onClick={() => onPageChange(Number.parseInt(pageNumber))}
+          >
             {pageNumber}
           </li>
         );
       })}
-      <li className={`${style.item} ${currentPage === Number.parseInt(lastPage) ? style.disabled : ''}`} onClick={onNext}>
+      <li
+        className={`${style.item} ${
+          currentPage === Number.parseInt(lastPage) ? style.disabled : ""
+        }`}
+        onClick={onNext}
+      >
         <FaIcon icon="faChevronRight" />
       </li>
     </ul>

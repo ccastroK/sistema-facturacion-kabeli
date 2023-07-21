@@ -13,30 +13,21 @@ import { A } from "@/components/shared/A";
 import { Logo } from "@/components/shared/logo";
 import { Welcome } from "../loginComponents/welcome";
 import { defaultClasses } from "@/components/forms-views/form-socio";
+import { handleSubmit } from "@/Application/send-email";
 
 export const LogInView = () => {
   const router = useRouter();
+  // CRW quitar los any
   const [dataLogin, setDataLogin] = useState<any[]>([]);
   const setNewDataLogin = (newDataLogin: any[]) => {
     setDataLogin([...newDataLogin]);
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    const check = await CheckPassword(findIndexForm("email", dataLogin));
-    check
-      ? signIn("credentials", {
-          email: findIndexForm("email", dataLogin),
-          password: findIndexForm("password", dataLogin),
-          callbackUrl: "/",
-        })
-      : router.push("/send-email");
-  };
-
+  // CRW mandar a un servicio
   const handleGoogle = () => {
     signIn("google", { callbackUrl: "/" });
   };
-
+  // CRW  PONER CONSTANTES <3
   return (
     <>
       <main className={styles.container}>
@@ -63,7 +54,7 @@ export const LogInView = () => {
             type: "submit",
             className: styles.enabled,
           }}
-          onSubmit={handleSubmit}
+          onSubmit={(e) => handleSubmit(e, router, dataLogin)}
         />
         <A name="¿No tienes tu contraseña?" url="/send-email/forgot" />
       </main>
